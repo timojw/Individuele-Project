@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Text;
+using Logic.DTO;
+using Logic.Interfaces;
 
 namespace DAL.Managers
 {
-    class BidDatabaseManager : DatabaseManager
+    public class BidDatabaseManager : DatabaseManager, IBidDatabaseManager
     {
+
         public List<BidDTO> GetAllBids()
         {
             List<BidDTO> bids = new List<BidDTO>();

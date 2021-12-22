@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Text;
+using Logic.DTO;
+using Logic.Interfaces;
 
 namespace DAL.Managers
 {
-    class WishlistDatabaseManager : DatabaseManager
+    public class WishlistDatabaseManager : DatabaseManager, IWishlistDatabaseManager
     {
         public List<WishlistDTO> GetAllWishlists()
         {

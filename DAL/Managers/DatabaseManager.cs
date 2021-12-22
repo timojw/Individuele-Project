@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
+
 namespace DAL.Managers
 {
     public class DatabaseManager

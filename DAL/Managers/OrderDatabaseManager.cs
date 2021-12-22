@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Text;
+using Logic.DTO;
+using Logic.Interfaces;
 
 namespace DAL.Managers
 {
-    class OrderDatabaseManager : DatabaseManager
+    public class OrderDatabaseManager : DatabaseManager, IOrderDatabaseManager
     {
         public List<OrderDTO> GetAllOrders()
         {

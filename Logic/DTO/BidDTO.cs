@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DAL
+namespace Logic.DTO
 {
-    class ProductReviewDTO : ReviewDTO
+    public class BidDTO
     {
-        public int ReviewerID { get; set; }
         public int ProductID { get; set; }
-
+        public int UserID { get; set; }
+        public decimal Amount { get; set; }
     }
 }

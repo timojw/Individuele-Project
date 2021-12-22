@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using DAL.Managers;
+using Logic.Interfaces;
 
 namespace Individueel
 {
@@ -24,6 +26,13 @@ namespace Individueel
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddScoped<IBidDatabaseManager, BidDatabaseManager>();
+            services.AddScoped<IOrderDatabaseManager, OrderDatabaseManager>();
+            services.AddScoped<IProductDatabaseManager, ProductDatabaseManager>();
+            services.AddScoped<IReviewDatabaseManager, ReviewDatabaseManager>();
+            services.AddScoped<IUserDatabaseManager, UserDatabaseManager>();
+            services.AddScoped<IWishlistDatabaseManager, WishlistDatabaseManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

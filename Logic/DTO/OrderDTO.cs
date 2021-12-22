@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DAL
+namespace Logic.DTO
 {
-    class OrderDTO
+    public class OrderDTO
     {
         public int ID { get; set; }
         public int UserID { get; set; }

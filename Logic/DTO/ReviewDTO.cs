@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DAL
+namespace Logic.DTO
 {
-    class ReviewDTO
+    public class ReviewDTO
     {
         public int ID { get; set; }
         public string Text { get; set; }

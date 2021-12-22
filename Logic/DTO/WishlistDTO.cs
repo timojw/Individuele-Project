@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DAL
+namespace Logic.DTO
 {
     public class WishlistDTO
     {

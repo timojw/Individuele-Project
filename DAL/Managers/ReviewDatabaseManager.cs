@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Text;
+using Logic.DTO;
+using Logic.Interfaces;
 
 namespace DAL.Managers
 {
-    class ReviewDatabaseManager : DatabaseManager
+    public class ReviewDatabaseManager : DatabaseManager, IReviewDatabaseManager
     {
         public List<ProductReviewDTO> GetAllProductReviews()
         {

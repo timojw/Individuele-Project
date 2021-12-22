@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Text;
+using Logic.DTO;
+using Logic.Interfaces;
 
 
 namespace DAL.Managers
 {
-    class ProductDatabaseManager : DatabaseManager
+    public class ProductDatabaseManager : DatabaseManager, IProductDatabaseManager
     {
         public List<ProductDTO> GetAllProducts()
         {
@@ -34,7 +36,7 @@ namespace DAL.Managers
                         product.HighestBid = reader.GetDecimal(9);
                         product.Deadline = reader.GetDateTime(10);
                         product.Available = reader.GetInt32(11);
-            
+
                         products.Add(product);
                     }
                 }
