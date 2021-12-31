@@ -6,5 +6,6 @@ namespace Logic.Interfaces
     public interface IUserDatabaseManager
     {
         List<UserDTO> GetAllUsers();
+        void AddUser(UserDTO userDTO);
     }
 }
