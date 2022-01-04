@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Logic
@@ -11,6 +12,7 @@ namespace Logic
         public string Email { get; set; }
         public string Password { get; set; }
         public DateTime RegisterDate { get; set; }
+        [Key]
         public int ID { get; set; }
         public string Country { get; set; }
         public string State { get; set; }

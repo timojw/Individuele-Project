@@ -13,7 +13,7 @@ namespace View.Controllers
         // GET: ProductController
         public IActionResult _ViewProduct(int id)
         {
-            var product = new RegularProduct() { name = "coc" };
+            var product = new RegularProduct(1, "cocl", 1);
             return View(product);
         }
 
