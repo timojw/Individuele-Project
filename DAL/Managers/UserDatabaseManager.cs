@@ -45,11 +45,15 @@ namespace DAL.Managers
         {
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
-                using SqlCommand query = new SqlCommand("INSERT INTO [dbo].[Account] ([UserName], [Password], [Name], [Email], [PlatformID], [Description]) VALUES (@UserName, @Password, @Name, @Email, @PlatformID, @Description", conn);
+                using SqlCommand query = new SqlCommand("INSERT INTO [dbo].[Account] ([ID], [Name], [Email], [Password], [RegisterDate], [Country], [State], [City], [Street], [HouseNumber], [PostalCode]) VALUES (@UserName, @Password, @Name, @Email, @PlatformID, @Description", conn);
                 conn.Open();
-                query.Parameters.AddWithValue("@Name", userDto.Name);
-                query.Parameters.AddWithValue("@Password", userDto.Password);
+                query.Parameters.AddWithValue("@ID", userDto.ID);
+                query.Parameters.AddWithValue("@Name", userDto.Name);                
                 query.Parameters.AddWithValue("@Email", userDto.Email);
+                query.Parameters.AddWithValue("@Password", userDto.Password);
+                query.Parameters.AddWithValue("@RegisterDate", userDto.RegisterDate);
+
+
                 //query.Parameters.AddWithValue("@PlatformID", userDto.PlatformID);
                 //query.Parameters.AddWithValue("@Description", userDto.Description);
                 var modified = query.ExecuteScalar();

@@ -6,43 +6,44 @@ namespace Logic
 {
     class User
     {
-        #region vars
-        string name;
-        string email;
-        string password;
-        DateTime registerDate;
-        string userID;
-        string country;
-        string state;
-        string city;
-        string street;
-        int housenumber;
+        #region props
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public DateTime RegisterDate { get; set; }
+        public int ID { get; set; }
+        public string Country { get; set; }
+        public string State { get; set; }
+        public string City { get; set; }
+        public string Street { get; set; }
+        public int HouseNumber { get; set; }
+        public string PostalCode { get; set; }
         string postalCode;
         #endregion
 
         public User(string _name, string _email, string _password)
         {
             //test 2
-            this.name = _name;
-            this.email = _email;
-            this.password = _password;
-            this.registerDate = DateTime.Now;
-            this.userID = generateUserID();
+            this.Name = _name;
+            this.Email = _email;
+            this.Password = _password;
+            this.RegisterDate = DateTime.Now;
+            this.ID = generateUserID();
         }
 
-        private string generateUserID()
+        private int generateUserID()
         {
-            return "";
+            return 1;
         }
 
         public void addAdress(string _country, string _state, string _city, string _street, int _housenumber, string _postalCode)
         {
-            this.country = _country;
-            this.state = _state;
-            this.city = _city;
-            this.street = _street;
-            this.housenumber = _housenumber;
-            this.postalCode = _postalCode;
+            this.Country = _country;
+            this.State = _state;
+            this.City = _city;
+            this.Street = _street;
+            this.HouseNumber = _housenumber;
+            this.PostalCode = _postalCode;
         }
     }
 }

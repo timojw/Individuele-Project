@@ -8,9 +8,9 @@ namespace Logic
         private IProductDatabaseManager productDatabaseManager;
         public double Price { get; set; }
 
-        public RegularProduct(string _userID, string _name, int _available, IProductDatabaseManager _productDatabaseManager)
+        public RegularProduct(int _userID, string _name, int _available, IProductDatabaseManager _productDatabaseManager)
         {
-           this.productID = generateProductID("reg");
+           this.productID = generateProductID();
            this.userID = _userID;
            this.name = _name;
            this.available = _available;

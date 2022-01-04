@@ -2,18 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Logic
+namespace View.Models
 {
     public class Product
     {
-        public int productID { get; set; }
-        public int userID { get; set; }
+        public string productID { get; set; }
+        public string userID { get; set; }
         public string name { get; set; }
         public int available { get; set; }
 
-        protected int generateProductID()
-        {
-            return 1;
-        }
     }
 }

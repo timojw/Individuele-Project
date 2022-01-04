@@ -6,9 +6,9 @@ namespace Logic
 {
     public class AuctionProduct:Product
     {
-        public AuctionProduct(string _userID, string _name, int _available)
+        public AuctionProduct(int _userID, string _name, int _available)
         {
-           this.productID = generateProductID("auc");
+           this.productID = generateProductID();
            this.userID = _userID;
            this.name = _name;
            this.available = _available;
