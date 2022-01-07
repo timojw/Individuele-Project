@@ -6,16 +6,15 @@ namespace Logic
 {
     class UserReview:Review
     {
-        private string returnmessage;
-        public string ReviewedID { get; set; }
+        public int ReviewedID { get; set; }
 
-        public UserReview(string tempReviewer, string tempReviewed, string tempText, string tempStars)
+        public UserReview(int _ID, int _reviewerID, int _reviewedID, string _text, string _stars)
         {
-            this.ReviewID = this.generateReviewID(2);
-            this.ReviewerID = tempReviewer;
-            this.ReviewedID = tempReviewed;
-            this.returnmessage = this.changeText(tempText);
-            this.returnmessage = this.changeStars(tempStars);
+            this.ID = _ID;
+            this.ReviewerID = _reviewerID;
+            this.ReviewedID = _reviewedID;
+            this.Text = _text;
+            this.Stars = _stars;
         }
     }
 }

@@ -7,15 +7,15 @@ namespace Logic
     class ProductReview:Review
     {
         private string returnmessage;
-        public string ProductID { get; set; }
+        public int ProductID { get; set; }
 
-        public ProductReview(string tempReviewer, string tempReviewed, string tempText, string tempStars)
+        public ProductReview(int _ID, int _reviewerID, int _productID, string _text, string _stars)
         {
-            this.ReviewID = this.generateReviewID(1);
-            this.ReviewerID = tempReviewer;
-            this.ProductID = tempReviewed;
-            this.returnmessage = this.changeText(tempText);
-            this.returnmessage = this.changeStars(tempStars);
+            this.ID = _ID;
+            this.ReviewerID = _reviewerID;
+            this.ProductID = _productID;
+            this.returnmessage = this.changeText(_text);
+            this.returnmessage = this.changeStars(_stars);
         }
     }
 }

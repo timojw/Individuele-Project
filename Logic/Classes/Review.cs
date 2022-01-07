@@ -6,10 +6,10 @@ namespace Logic
 {
     class Review
     {
-        public int ReviewID { get; set; }
-        public string ReviewerID { get; set; }
+        public int ID { get; set; }
+        public int ReviewerID { get; set; }
         protected string Text { get; set; }
-        protected string stars { get; set; }
+        protected string Stars { get; set; }
         
         protected string changeText(string tempText)
         {
@@ -27,22 +27,13 @@ namespace Logic
         {
             if (tempStars.Length < 6)
             {
-                this.stars = tempStars;
+                this.Stars = tempStars;
                 return "Succes";
             }
             else
             {
                 return "Failed";
             }
-        }
-        protected int generateReviewID(int ReviewType)
-        {
-            Random random = new Random();
-            int i = random.Next();
-            string tempIDString = i.ToString();
-            tempIDString = "1" + tempIDString;
-
-            return Convert.ToInt32(tempIDString);
         }
         }
     }
