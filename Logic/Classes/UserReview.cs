@@ -7,13 +7,13 @@ namespace Logic
     class UserReview:Review
     {
         private string returnmessage;
-        public string reviewedUserID { get; set; }
+        public string ReviewedID { get; set; }
 
         public UserReview(string tempReviewer, string tempReviewed, string tempText, string tempStars)
         {
-            this.reviewID = this.generateReviewID(2);
-            this.reviewerID = tempReviewer;
-            this.reviewedUserID = tempReviewed;
+            this.ReviewID = this.generateReviewID(2);
+            this.ReviewerID = tempReviewer;
+            this.ReviewedID = tempReviewed;
             this.returnmessage = this.changeText(tempText);
             this.returnmessage = this.changeStars(tempStars);
         }

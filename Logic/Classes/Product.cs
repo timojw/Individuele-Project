@@ -6,14 +6,9 @@ namespace Logic
 {
     public class Product
     {
-        public int productID { get; set; }
-        public int userID { get; set; }
-        public string name { get; set; }
-        public int available { get; set; }
-
-        protected int generateProductID()
-        {
-            return 1;
-        }
+        public int ID { get; set; }
+        public int UserID { get; set; }
+        public string Name { get; set; }
+        public int Available { get; set; }
     }
 }

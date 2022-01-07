@@ -6,16 +6,16 @@ namespace Logic
 {
     class Review
     {
-        public int reviewID { get; set; }
-        public string reviewerID { get; set; }
-        protected string text { get; set; }
+        public int ReviewID { get; set; }
+        public string ReviewerID { get; set; }
+        protected string Text { get; set; }
         protected string stars { get; set; }
         
         protected string changeText(string tempText)
         {
             if (tempText.Length < 100)
             {
-                this.text = tempText;
+                this.Text = tempText;
                 return "Succes";
             }
             else
