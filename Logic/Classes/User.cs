@@ -7,21 +7,19 @@ namespace Logic
 {
     class User
     {
-        #region props
+        [Key]
+        public int ID { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
         public DateTime RegisterDate { get; set; }
-        [Key]
-        public int ID { get; set; }
+
         public string Country { get; set; }
         public string State { get; set; }
         public string City { get; set; }
         public string Street { get; set; }
         public int HouseNumber { get; set; }
         public string PostalCode { get; set; }
-        string postalCode;
-        #endregion
 
         public User(string _name, string _email, string _password)
         {
