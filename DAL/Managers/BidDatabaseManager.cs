@@ -34,5 +34,20 @@ namespace DAL.Managers
             }
             return bids;
         }
+        void IBidDatabaseManager.AddBid(BidDTO BidDTO)
+        {
+            using (SqlConnection conn = new SqlConnection(this.connectionString))
+            {
+                using SqlCommand query = new SqlCommand("INSERT INTO [dbo].[Bid] ([productID], [userID], [amount]) VALUES (@productID, @userID, @amount", conn);
+                conn.Open();
+
+                query.Parameters.AddWithValue("@productID", BidDTO.ProductID);
+                query.Parameters.AddWithValue("@userID", BidDTO.UserID);
+                query.Parameters.AddWithValue("@amount", BidDTO.Amount);
+
+
+                var modified = query.ExecuteScalar();
+            }
+        }
     }
 }

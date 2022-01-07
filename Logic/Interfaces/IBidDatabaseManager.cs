@@ -6,5 +6,6 @@ namespace Logic.Interfaces
     public interface IBidDatabaseManager
     {
         List<BidDTO> GetAllBids();
+        void AddBid(BidDTO bidDTO);
     }
 }

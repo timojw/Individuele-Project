@@ -43,5 +43,29 @@ namespace DAL.Managers
             }
             return products;
         }
+        void IProductDatabaseManager.AddProduct(ProductDTO ProductDTO)
+        {
+            using (SqlConnection conn = new SqlConnection(this.connectionString))
+            {
+                using SqlCommand query = new SqlCommand("INSERT INTO [dbo].[Product] ([name], [description], [userID], [status], [orderID], [productType], [regularproduct_price], [biddingproduct_minimumPrice], [biddingproduct_hightestBid], [biddingproduct_deadline], [available] ) VALUES (@name, @description, @userID, @status, @orderID, @productType, @regularproduct_price, @biddingproduct_minimumPrice, @biddingproduct_highestBid, @biddingproduct_deadline, @available", conn);
+                conn.Open();
+
+                query.Parameters.AddWithValue("@name", ProductDTO.Name);
+                query.Parameters.AddWithValue("@description", ProductDTO.Description);
+                query.Parameters.AddWithValue("@userID", ProductDTO.UserID);
+                query.Parameters.AddWithValue("@status", ProductDTO.Status);
+                query.Parameters.AddWithValue("@orderID", ProductDTO.OrderID);
+                query.Parameters.AddWithValue("@productType", ProductDTO.ProductType);
+                query.Parameters.AddWithValue("@regularproduct_price", ProductDTO.Price);
+                query.Parameters.AddWithValue("@biddingproduct_minimumPrice", ProductDTO.MinimumPrice);
+                query.Parameters.AddWithValue("@biddingproduct_hightestBid", ProductDTO.HighestBid);
+                query.Parameters.AddWithValue("@biddingproduct_deadline", ProductDTO.Deadline);
+                query.Parameters.AddWithValue("@available", ProductDTO.Available);
+
+                var modified = query.ExecuteScalar();
+                ProductDTO.ID = (int)modified;
+            }
+        }
     }
+
 }

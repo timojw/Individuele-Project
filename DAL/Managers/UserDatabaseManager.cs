@@ -45,17 +45,19 @@ namespace DAL.Managers
         {
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
-                using SqlCommand query = new SqlCommand("INSERT INTO [dbo].[Account] ([ID], [Name], [Email], [Password], [RegisterDate], [Country], [State], [City], [Street], [HouseNumber], [PostalCode]) VALUES (@UserName, @Password, @Name, @Email, @PlatformID, @Description", conn);
+                using SqlCommand query = new SqlCommand("INSERT INTO [dbo].[User] ([Name], [Email], [Password], [RegisterDate], [Country], [State], [City], [Street], [HouseNumber], [PostalCode]) VALUES (@Name, @Email, @Password, @RegisterDate, @Country, @State, @City, @Street, @HouseNumber, @PostalCode", conn);
                 conn.Open();
-                query.Parameters.AddWithValue("@ID", userDto.ID);
                 query.Parameters.AddWithValue("@Name", userDto.Name);                
                 query.Parameters.AddWithValue("@Email", userDto.Email);
                 query.Parameters.AddWithValue("@Password", userDto.Password);
                 query.Parameters.AddWithValue("@RegisterDate", userDto.RegisterDate);
+                query.Parameters.AddWithValue("@Country", userDto.Country);
+                query.Parameters.AddWithValue("@State", userDto.State);
+                query.Parameters.AddWithValue("@City", userDto.City);
+                query.Parameters.AddWithValue("@Street", userDto.Street);
+                query.Parameters.AddWithValue("@HouseNumber", userDto.HouseNumber);
+                query.Parameters.AddWithValue("@PostalCode", userDto.PostalCode);
 
-
-                //query.Parameters.AddWithValue("@PlatformID", userDto.PlatformID);
-                //query.Parameters.AddWithValue("@Description", userDto.Description);
                 var modified = query.ExecuteScalar();
                 userDto.ID = (int)modified;
             }

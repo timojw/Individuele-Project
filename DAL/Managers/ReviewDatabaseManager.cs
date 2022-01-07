@@ -76,8 +76,40 @@ namespace DAL.Managers
             return allReviews;
         }
 
+        void IReviewDatabaseManager.AddReview(ProductReviewDTO ProductReviewDTO)
+        {
+            using (SqlConnection conn = new SqlConnection(this.connectionString))
+            {
+                using SqlCommand query = new SqlCommand("INSERT INTO [dbo].[ProductReview] ([reviewerID], [productID], [text], [stars]) VALUES (@reviewerID, @productID, @text, @stars", conn);
+                conn.Open();
+
+                query.Parameters.AddWithValue("@reviewerID", ProductReviewDTO.ReviewerID);
+                query.Parameters.AddWithValue("@productID", ProductReviewDTO.ProductID);
+                query.Parameters.AddWithValue("@text", ProductReviewDTO.Text);
+                query.Parameters.AddWithValue("@stars", ProductReviewDTO.Stars);
 
 
+                var modified = query.ExecuteScalar();
+                ProductReviewDTO.ID = (int)modified;
+            }
+        }
 
+        void IReviewDatabaseManager.AddReview(UserReviewDTO userReviewDTO)
+        {
+            using (SqlConnection conn = new SqlConnection(this.connectionString))
+            {
+                using SqlCommand query = new SqlCommand("INSERT INTO [dbo].[UserReview] ([reviewerID], [reviewedID], [text], [stars]) VALUES (@reviewerID, @reviewedID, @text, @stars", conn);
+                conn.Open();
+
+                query.Parameters.AddWithValue("@reviewerID", userReviewDTO.ReviewerID);
+                query.Parameters.AddWithValue("@reviewedID", userReviewDTO.ReviewedID);
+                query.Parameters.AddWithValue("@text", userReviewDTO.Text);
+                query.Parameters.AddWithValue("@stars", userReviewDTO.Stars);
+
+
+                var modified = query.ExecuteScalar();
+                userReviewDTO.ID = (int)modified;
+            }
+        }
     }
 }

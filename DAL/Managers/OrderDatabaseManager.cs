@@ -31,6 +31,23 @@ namespace DAL.Managers
             }
             return orders;
         }
+
+        void IOrderDatabaseManager.AddOrder(OrderDTO OrderDTO)
+        {
+            using (SqlConnection conn = new SqlConnection(this.connectionString))
+            {
+                using SqlCommand query = new SqlCommand("INSERT INTO [dbo].[Order] ([userID], [status], [time]) VALUES (@userID, @status, @time", conn);
+                conn.Open();
+
+                query.Parameters.AddWithValue("@userID", OrderDTO.UserID);
+                query.Parameters.AddWithValue("@status", OrderDTO.Status);
+                query.Parameters.AddWithValue("@time", OrderDTO.Time);
+
+
+                var modified = query.ExecuteScalar();
+                OrderDTO.ID = (int)modified;
+            }
+        }
     }
 }
 
