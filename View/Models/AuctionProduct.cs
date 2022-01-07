@@ -9,9 +9,8 @@ namespace View.Models
         public decimal MinimumPrice { get; set; }
         public decimal HighestBid { get; set; }
         public DateTime Deadline { get; set; }
-        public AuctionProduct(int _ID, int _userID, string _name, int _available)
+        public AuctionProduct(int _userID, string _name, int _available)
         {
-            this.ID = _ID;
             this.UserID = _userID;
             this.Name = _name;
             this.Available = _available;

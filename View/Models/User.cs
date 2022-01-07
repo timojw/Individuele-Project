@@ -27,12 +27,6 @@ namespace View.Models
             this.Email = _email;
             this.Password = _password;
             this.RegisterDate = DateTime.Now;
-            this.ID = generateUserID();
-        }
-
-        private int generateUserID()
-        {
-            return 1;
         }
 
         public void addAdress(string _country, string _state, string _city, string _street, int _housenumber, string _postalCode)

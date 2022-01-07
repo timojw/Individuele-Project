@@ -13,28 +13,24 @@ namespace View.Models
         protected string Text { get; set; }
         protected string Stars { get; set; }
 
-        protected string changeText(string tempText)
+        protected void changeText(string tempText)
         {
             if (tempText.Length < 100)
             {
                 this.Text = tempText;
-                return "Succes";
             }
             else
             {
-                return "Failed";
             }
         }
-        protected string changeStars(string tempStars)
+        protected void changeStars(string tempStars)
         {
             if (tempStars.Length < 6)
             {
                 this.Stars = tempStars;
-                return "Succes";
             }
             else
             {
-                return "Failed";
             }
         }
 

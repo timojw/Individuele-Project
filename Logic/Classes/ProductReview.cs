@@ -9,9 +9,8 @@ namespace Logic
         private string returnmessage;
         public int ProductID { get; set; }
 
-        public ProductReview(int _ID, int _reviewerID, int _productID, string _text, string _stars)
+        public ProductReview(int _reviewerID, int _productID, string _text, string _stars)
         {
-            this.ID = _ID;
             this.ReviewerID = _reviewerID;
             this.ProductID = _productID;
             this.returnmessage = this.changeText(_text);

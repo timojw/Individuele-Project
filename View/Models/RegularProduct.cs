@@ -7,9 +7,8 @@ namespace View.Models
     {
         public double Price { get; set; }
 
-        public RegularProduct(int _ID, int _userID, string _name, int _available)
+        public RegularProduct(int _userID, string _name, int _available)
         {
-            this.ID = _ID;
             this.UserID = _userID;
             this.Name = _name;
             this.Available = _available;
