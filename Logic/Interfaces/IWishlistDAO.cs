@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Logic.Interfaces
 {
-    public interface IWishlistDatabaseManager
+    public interface IWishlistDAO
     {
         List<WishlistDTO> GetAllWishlists();
     }

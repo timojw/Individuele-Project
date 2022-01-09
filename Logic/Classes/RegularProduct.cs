@@ -5,12 +5,13 @@ namespace Logic
 {
     public class RegularProduct:Product
     {
-        public double Price { get; set; }
+        public decimal Price { get; set; }
 
-        public RegularProduct(int _userID, string _name, int _available)
+        public RegularProduct(int _userID, string _name, decimal _price, int _available)
         {
            this.UserID = _userID;
            this.Name = _name;
+           this.Price = _price;
            this.Available = _available;
         }
     }

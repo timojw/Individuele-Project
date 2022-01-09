@@ -7,7 +7,7 @@ using Logic.Interfaces;
 
 namespace DAL.Managers
 {
-    public class BidDatabaseManager : DatabaseManager, IBidDatabaseManager
+    public class BidDAO : DatabaseManager, IBidDAO
     {
 
         public List<BidDTO> GetAllBids()
@@ -34,7 +34,7 @@ namespace DAL.Managers
             }
             return bids;
         }
-        void IBidDatabaseManager.AddBid(BidDTO BidDTO)
+        void IBidDAO.AddBid(BidDTO BidDTO)
         {
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {

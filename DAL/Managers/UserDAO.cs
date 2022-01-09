@@ -7,7 +7,7 @@ using Logic.Interfaces;
 
 namespace DAL.Managers
 {
-    public class UserDatabaseManager : DatabaseManager, IUserDatabaseManager
+    public class UserDAO : DatabaseManager, IUserDAO
     {
         public List<UserDTO> GetAllUsers()
         {
@@ -41,7 +41,7 @@ namespace DAL.Managers
             return users;
         }
 
-        void IUserDatabaseManager.AddUser(UserDTO userDto)
+        int IUserDAO.AddUser(UserDTO userDto)
         {
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
@@ -60,6 +60,7 @@ namespace DAL.Managers
 
                 var modified = query.ExecuteScalar();
                 userDto.ID = (int)modified;
+                return userDto.ID;
             }
         }
     }

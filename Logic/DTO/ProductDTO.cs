@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Logic.Classes;
 
 namespace Logic.DTO
 {
@@ -15,7 +16,7 @@ namespace Logic.DTO
         public int ProductType { get; set; }
         public decimal Price { get; set; }
         public decimal MinimumPrice { get; set; }
-        public decimal HighestBid { get; set; }
+        public List<Bid> Bids { get; set; }
         public DateTime Deadline { get; set; }
         public int Available { get; set; }
     }

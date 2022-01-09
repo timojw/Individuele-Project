@@ -7,7 +7,7 @@ using Logic.Interfaces;
 
 namespace DAL.Managers
 {
-    public class OrderDatabaseManager : DatabaseManager, IOrderDatabaseManager
+    public class OrderDAO : DatabaseManager, IOrderDAO
     {
         public List<OrderDTO> GetAllOrders()
         {
@@ -32,7 +32,7 @@ namespace DAL.Managers
             return orders;
         }
 
-        void IOrderDatabaseManager.AddOrder(OrderDTO OrderDTO)
+        void IOrderDAO.AddOrder(OrderDTO OrderDTO)
         {
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
@@ -46,6 +46,17 @@ namespace DAL.Managers
 
                 var modified = query.ExecuteScalar();
                 OrderDTO.ID = (int)modified;
+            }
+        }
+
+        public void DeleteOrder(OrderDTO order)
+        {
+            using (SqlConnection conn = new SqlConnection(this.connectionString))
+            {
+                SqlCommand query = new SqlCommand("DELETE FROM [dbo].[Order] WHERE [ID] == @id", conn);
+                query.Parameters.AddWithValue("@id", order.ID);
+                conn.Open();
+                query.ExecuteNonQuery();
             }
         }
     }

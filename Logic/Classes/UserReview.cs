@@ -8,7 +8,7 @@ namespace Logic
     {
         public int ReviewedID { get; set; }
 
-        public UserReview(int _reviewerID, int _reviewedID, string _text, string _stars)
+        public UserReview(int _reviewerID, int _reviewedID, string _text, int _stars)
         {
             this.ReviewerID = _reviewerID;
             this.ReviewedID = _reviewedID;

@@ -7,7 +7,7 @@ using Logic.Interfaces;
 
 namespace DAL.Managers
 {
-    public class ReviewDatabaseManager : DatabaseManager, IReviewDatabaseManager
+    public class ReviewDAO : DatabaseManager, IReviewDAO
     {
         public List<ProductReviewDTO> GetAllProductReviews()
         {
@@ -76,7 +76,7 @@ namespace DAL.Managers
             return allReviews;
         }
 
-        void IReviewDatabaseManager.AddReview(ProductReviewDTO ProductReviewDTO)
+        int IReviewDAO.AddReview(ProductReviewDTO ProductReviewDTO)
         {
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
@@ -91,10 +91,11 @@ namespace DAL.Managers
 
                 var modified = query.ExecuteScalar();
                 ProductReviewDTO.ID = (int)modified;
+                return ProductReviewDTO.ID;
             }
         }
 
-        void IReviewDatabaseManager.AddReview(UserReviewDTO userReviewDTO)
+        int IReviewDAO.AddReview(UserReviewDTO userReviewDTO)
         {
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
@@ -109,7 +110,32 @@ namespace DAL.Managers
 
                 var modified = query.ExecuteScalar();
                 userReviewDTO.ID = (int)modified;
+                return userReviewDTO.ID;
             }
         }
+
+        public void DeleteReview(UserReviewDTO userReview)
+        {
+            using (SqlConnection conn = new SqlConnection(this.connectionString))
+            {
+                SqlCommand query = new SqlCommand("DELETE FROM [dbo].[UserReview] WHERE [ID] == @id", conn);
+                query.Parameters.AddWithValue("@id", userReview.ID);
+                conn.Open();
+                query.ExecuteNonQuery();
+            }
+        }
+
+        public void DeleteReview(ProductReviewDTO productReview)
+        {
+            using (SqlConnection conn = new SqlConnection(this.connectionString))
+            {
+                SqlCommand query = new SqlCommand("DELETE FROM [dbo].[ProductReview] WHERE [ID] == @id", conn);
+                query.Parameters.AddWithValue("@id", productReview.ID);
+                conn.Open();
+                query.ExecuteNonQuery();
+            }
+        }
+
+
     }
 }

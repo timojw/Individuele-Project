@@ -8,7 +8,7 @@ using Logic.Interfaces;
 
 namespace DAL.Managers
 {
-    public class ProductDatabaseManager : DatabaseManager, IProductDatabaseManager
+    public class ProductDAO : DatabaseManager, IProductDAO
     {
         public List<ProductDTO> GetAllProducts()
         {
@@ -33,9 +33,8 @@ namespace DAL.Managers
                         product.ProductType = reader.GetInt32(6);
                         product.Price = reader.GetDecimal(7);
                         product.MinimumPrice = reader.GetDecimal(8);
-                        product.HighestBid = reader.GetDecimal(9);
-                        product.Deadline = reader.GetDateTime(10);
-                        product.Available = reader.GetInt32(11);
+                        product.Deadline = reader.GetDateTime(9);
+                        product.Available = reader.GetInt32(10);
 
                         products.Add(product);
                     }
@@ -43,11 +42,11 @@ namespace DAL.Managers
             }
             return products;
         }
-        void IProductDatabaseManager.AddProduct(ProductDTO ProductDTO)
+        int IProductDAO.AddProduct(ProductDTO ProductDTO)
         {
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
-                using SqlCommand query = new SqlCommand("INSERT INTO [dbo].[Product] ([name], [description], [userID], [status], [orderID], [productType], [regularproduct_price], [biddingproduct_minimumPrice], [biddingproduct_hightestBid], [biddingproduct_deadline], [available] ) VALUES (@name, @description, @userID, @status, @orderID, @productType, @regularproduct_price, @biddingproduct_minimumPrice, @biddingproduct_highestBid, @biddingproduct_deadline, @available", conn);
+                using SqlCommand query = new SqlCommand("INSERT INTO [dbo].[Product] ([name], [description], [userID], [status], [orderID], [productType], [regularproduct_price], [biddingproduct_minimumPrice], [biddingproduct_deadline], [available] ) VALUES (@name, @description, @userID, @status, @orderID, @productType, @regularproduct_price, @biddingproduct_minimumPrice, @biddingproduct_deadline, @available", conn);
                 conn.Open();
 
                 query.Parameters.AddWithValue("@name", ProductDTO.Name);
@@ -58,12 +57,22 @@ namespace DAL.Managers
                 query.Parameters.AddWithValue("@productType", ProductDTO.ProductType);
                 query.Parameters.AddWithValue("@regularproduct_price", ProductDTO.Price);
                 query.Parameters.AddWithValue("@biddingproduct_minimumPrice", ProductDTO.MinimumPrice);
-                query.Parameters.AddWithValue("@biddingproduct_hightestBid", ProductDTO.HighestBid);
                 query.Parameters.AddWithValue("@biddingproduct_deadline", ProductDTO.Deadline);
                 query.Parameters.AddWithValue("@available", ProductDTO.Available);
 
                 var modified = query.ExecuteScalar();
                 ProductDTO.ID = (int)modified;
+                return ProductDTO.ID;
+            }
+        }
+        public void DeleteProduct(ProductDTO product)
+        {
+            using (SqlConnection conn = new SqlConnection(this.connectionString))
+            {
+                SqlCommand query = new SqlCommand("DELETE FROM [dbo].[Product] WHERE [ID] == @id", conn);
+                query.Parameters.AddWithValue("@id", product.ID);
+                conn.Open();
+                query.ExecuteNonQuery();
             }
         }
     }

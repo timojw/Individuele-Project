@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace Logic.Interfaces
 {
-    public interface IUserDatabaseManager
+    public interface IUserDAO
     {
         List<UserDTO> GetAllUsers();
-        void AddUser(UserDTO userDTO);
+        int AddUser(UserDTO userDTO);
     }
 }

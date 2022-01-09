@@ -7,7 +7,7 @@ using Logic.Interfaces;
 
 namespace DAL.Managers
 {
-    public class WishlistDatabaseManager : DatabaseManager, IWishlistDatabaseManager
+    public class WishlistDAO : DatabaseManager, IWishlistDAO
     {
         public List<WishlistDTO> GetAllWishlists()
         {

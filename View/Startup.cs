@@ -37,12 +37,12 @@ namespace View
             services.AddControllersWithViews();
             services.AddRazorPages();
 
-            services.AddScoped<IBidDatabaseManager, BidDatabaseManager>();
-            services.AddScoped<IOrderDatabaseManager, OrderDatabaseManager>();
-            services.AddScoped<IProductDatabaseManager, ProductDatabaseManager>();
-            services.AddScoped<IReviewDatabaseManager, ReviewDatabaseManager>();
-            services.AddScoped<IUserDatabaseManager, UserDatabaseManager>();
-            services.AddScoped<IWishlistDatabaseManager, WishlistDatabaseManager>();
+            services.AddScoped<IBidDAO, BidDAO>();
+            services.AddScoped<IOrderDAO, OrderDAO>();
+            services.AddScoped<IProductDAO, ProductDAO>();
+            services.AddScoped<IReviewDAO, ReviewDAO>();
+            services.AddScoped<IUserDAO, UserDAO>();
+            services.AddScoped<IWishlistDAO, WishlistDAO>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

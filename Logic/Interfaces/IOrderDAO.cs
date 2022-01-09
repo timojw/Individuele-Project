@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Logic.Interfaces
 {
-    public interface IOrderDatabaseManager
+    public interface IOrderDAO
     {
         List<OrderDTO> GetAllOrders();
         void AddOrder(OrderDTO orderDTO);

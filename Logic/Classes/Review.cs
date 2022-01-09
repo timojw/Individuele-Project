@@ -11,7 +11,7 @@ namespace Logic
         public int ID { get; set; }
         public int ReviewerID { get; set; }
         protected string Text { get; set; }
-        protected string Stars { get; set; }
+        protected int Stars { get; set; }
 
         protected string changeText(string tempText)
         {
@@ -25,11 +25,11 @@ namespace Logic
                 return "Failed";
             }
         }
-        protected string changeStars(string tempStars)
+        protected string changeStars(int _Stars)
         {
-            if (tempStars.Length < 6)
+            if (_Stars < 6)
             {
-                this.Stars = tempStars;
+                this.Stars = _Stars;
                 return "Succes";
             }
             else

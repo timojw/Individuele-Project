@@ -7,6 +7,10 @@ namespace Logic.Classes
 {
     class Wishlist
     {
+        public Wishlist()
+        {
+
+        }
         [Key]
         public int ID { get; set; }
         public int UserID { get; set; }

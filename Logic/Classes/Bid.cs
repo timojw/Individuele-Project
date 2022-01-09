@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Logic.Classes
 {
-    class Bid
+    public class Bid
     {
         public int ProductID { get; set; }
         public int UserID { get; set; }

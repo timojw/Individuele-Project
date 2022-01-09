@@ -9,7 +9,7 @@ namespace Logic
         private string returnmessage;
         public int ProductID { get; set; }
 
-        public ProductReview(int _reviewerID, int _productID, string _text, string _stars)
+        public ProductReview(int _reviewerID, int _productID, string _text, int _stars)
         {
             this.ReviewerID = _reviewerID;
             this.ProductID = _productID;

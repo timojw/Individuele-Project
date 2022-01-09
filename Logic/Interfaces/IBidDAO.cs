@@ -3,7 +3,7 @@ using Logic.DTO;
 
 namespace Logic.Interfaces
 {
-    public interface IBidDatabaseManager
+    public interface IBidDAO
     {
         List<BidDTO> GetAllBids();
         void AddBid(BidDTO bidDTO);
