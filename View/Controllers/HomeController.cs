@@ -10,7 +10,7 @@ using Logic.Interfaces;
 using Logic.Managers;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNet.Identity;
-using Logic;
+using Logic.Classes;
 
 namespace View.Controllers
 {

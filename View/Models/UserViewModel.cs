@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
+using Logic.Classes;
 
 namespace View.Models
 {
@@ -19,24 +20,8 @@ namespace View.Models
         public string Street { get; set; }
         public int HouseNumber { get; set; }
         public string PostalCode { get; set; }
-
-        public UserViewModel(string _name, string _email, string _password)
-        {
-            //test 2
-            this.Name = _name;
-            this.Email = _email;
-            this.Password = _password;
-            this.RegisterDate = DateTime.Now;
-        }
-
-        public void addAdress(string _country, string _state, string _city, string _street, int _housenumber, string _postalCode)
-        {
-            this.Country = _country;
-            this.State = _state;
-            this.City = _city;
-            this.Street = _street;
-            this.HouseNumber = _housenumber;
-            this.PostalCode = _postalCode;
-        }
+        public List<Product> Products { get; set; }
+        public List<Bid> Bids { get; set; }
+        public Wishlist Wishlist { get; set; }
     }
 }

@@ -34,6 +34,19 @@ namespace Logic.Managers
             }
             return products;
         }
+        public Product GetProduct(int id)
+        {
+            ProductDTO product1 = productDAO.GetProduct(id);
+            Product product = new Product()
+            {
+                ID = product1.ID,
+                Name = product1.Name,
+                Available = product1.Available,
+                UserID = product1.UserID,
+                Descripion = product1.Description
+            };            
+            return product;
+        }
         //public List<Bid> GetAllBids(Product product)
         //{
         //    List<Bid> bids = new List<Bid>();

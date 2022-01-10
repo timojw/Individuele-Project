@@ -1,0 +1,17 @@
+﻿
+@model ProductViewModel
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<p><strong>@Model.Name</strong></p>
+<p>@Model.UserID.ToString()</p>
+<hr />
+<p>€@Model.Price</p>
+<p>&nbsp;</p>
+<p>@Model.Description</p>
+<p>&nbsp;</p>
+<p><a href="cart"><h4>Add To Cart</h4></a></p>
+<p><a href="buy"><h4>Buy Now</h4></a></p>
+<p>There are only @Model.Available left</p>
+<p>&nbsp;</p>

@@ -56,44 +56,44 @@ namespace Logic
             this.PostalCode = _postalCode;
         }
 
-        public Product AddRegularProduct(string _name, string _description, decimal _price, int _available)
-        {
-            int ID = productDatabaseManager.AddProduct(new DTO.ProductDTO()
-            {
-                Name = _name,
-                Description = _description,
-                UserID = this.ID,
-                Price = _price,
-                //OrderID
-                Available = _available,
+        //public Product AddRegularProduct(string _name, string _description, decimal _price, int _available)
+        //{
+        //    int ID = productDatabaseManager.AddProduct(new DTO.ProductDTO()
+        //    {
+        //        Name = _name,
+        //        Description = _description,
+        //        UserID = this.ID,
+        //        Price = _price,
+        //        //OrderID
+        //        Available = _available,
 
-            }) ;
-            RegularProduct product = new RegularProduct(this.ID, _name, _price, _available);
-            product.ID = ID;
-            Producten.Add(product);
-            return product;
-        }
+        //    }) ;
+        //    RegularProduct product = new RegularProduct(this.ID, _name, _price, _available);
+        //    product.ID = ID;
+        //    Producten.Add(product);
+        //    return product;
+        //}
 
-        public Product AddAuctionProduct(string _name, string _description, decimal _minimumPrice, List<Bid> _bids, DateTime _deadline, int _available)
-        {
-            int ID = productDatabaseManager.AddProduct(new DTO.ProductDTO()
-            {
-                Name = _name,
-                Description = _description,
-                UserID = this.ID,
-                MinimumPrice = _minimumPrice,
-                Bids = _bids,
-                Deadline = _deadline,
-                //OrderID
-                Available = _available
+        //public Product AddAuctionProduct(string _name, string _description, decimal _minimumPrice, List<Bid> _bids, DateTime _deadline, int _available)
+        //{
+        //    int ID = productDatabaseManager.AddProduct(new DTO.ProductDTO()
+        //    {
+        //        Name = _name,
+        //        Description = _description,
+        //        UserID = this.ID,
+        //        MinimumPrice = _minimumPrice,
+        //        Bids = _bids,
+        //        Deadline = _deadline,
+        //        //OrderID
+        //        Available = _available
 
-            }) ;
-            AuctionProduct product = new AuctionProduct(this.ID, _name, _minimumPrice, _bids, _deadline, _available);
-            product.ID = ID;
-            Producten.Add(product);
+        //    }) ;
+        //    AuctionProduct product = new AuctionProduct(this.ID, _name, _minimumPrice, _bids, _deadline, _available);
+        //    product.ID = ID;
+        //    Producten.Add(product);
 
-            return product;
-        }
+        //    return product;
+        //}
 
         public ProductReview AddProductReview(int _productID, string _text, int _stars)
         {

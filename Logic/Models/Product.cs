@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
 
-namespace Logic
+namespace Logic.Classes
 {
     public class Product
     {
@@ -13,5 +13,9 @@ namespace Logic
         public string Name { get; set; }
         public int Available { get; set; }
         public string Descripion { get; set; }
+        public decimal Price { get; set; }
+        public decimal MinimumPrice { get; set; }
+        public List<Bid> Bids { get; set; }
+        public DateTime Deadline { get; set; }
     }
 }

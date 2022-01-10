@@ -39,7 +39,7 @@ namespace DAL.Managers
                             ProductType = Convert.ToInt32(reader["productType"]),
                             Price = Convert.ToDecimal(reader["regularproduct_price"]),
                             MinimumPrice = Convert.ToDecimal(reader["biddingproduct_minimumPrice"]),
-                            //product. = Convert.ToDecimal(reader["biddingproduct_highestBid"]);
+                            // = Convert.ToDecimal(reader["biddingproduct_highestBid"]);
                             Deadline = (DateTime)reader["biddingproduct_deadline"],
                             Available = Convert.ToInt32(reader["available"])
                         });
@@ -48,13 +48,13 @@ namespace DAL.Managers
             }
             return products;
         }
-        public ProductDTO
-        GetProduct(int id)
+        public ProductDTO GetProduct(int id)
         {
-            ProductDTO product = new();
+            ProductDTO product = new ProductDTO();
             using (SqlConnection conn = new SqlConnection(this.connectionString))
-            using (SqlCommand query = new SqlCommand("SELECT * FROM User WHERE [ID] = @id", conn))
+            using (SqlCommand query = new SqlCommand("SELECT * FROM [dbo].[Product] WHERE [ID] = @id", conn))       
             {
+                
                 query.Parameters.AddWithValue("@id", id);
                 query.Connection.Open();
 
@@ -64,12 +64,16 @@ namespace DAL.Managers
                     {
                         product.ID = Convert.ToInt32(reader["ID"]);
                         product.Name = reader["name"].ToString();
-                        product.Available = Convert.ToInt32(reader["available"]);
                         product.Description = reader["description"].ToString();
                         product.Price = Convert.ToDecimal(reader["regularproduct_price"]);
+                        product.UserID = Convert.ToInt32(reader["userID"]);
+                        product.Status = Convert.ToInt32(reader["status"]);
+                        product.OrderID = Convert.ToInt32(reader["orderID"]);
+                        product.ProductType = Convert.ToInt32(reader["productType"]);
                         product.MinimumPrice = Convert.ToDecimal(reader["biddingproduct_minimumPrice"]);
                         //product. = Convert.ToDecimal(reader["biddingproduct_highestBid"]);
                         product.Deadline = (DateTime)reader["biddingproduct_deadline"];
+                        product.Available = Convert.ToInt32(reader["available"]);
                     }
                 }
             }
