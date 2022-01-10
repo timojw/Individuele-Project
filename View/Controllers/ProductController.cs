@@ -14,12 +14,12 @@ namespace View.Controllers
     public class ProductController : Controller
     {
         ProductManager productManager;
-        public ProductController(IProductDAO productDatabaseManager, IReviewDAO reviewDatabaseManager, IBidDAO bidDatabaseManager)
+        UserManager userManager;
+        public ProductController(IProductDAO productDatabaseManager, IReviewDAO reviewDatabaseManager, IBidDAO bidDatabaseManager, IUserDAO iuserdao)
         {
             this.productManager = new ProductManager(productDatabaseManager, reviewDatabaseManager, bidDatabaseManager);
+            this.userManager = new UserManager(iuserdao, productDatabaseManager, reviewDatabaseManager, bidDatabaseManager);
         }
-
-         //GET: ProductController
         public IActionResult Index(int id)
         {
             var product = productManager.GetProduct(id);
@@ -29,9 +29,9 @@ namespace View.Controllers
                 Description = product.Descripion,
                 //Price = product.Price,
                 Available = product.Available,
-                UserID = product.UserID
-            };
-            
+                UserID = product.UserID,
+                UserName = userManager.GetUserByID(product.UserID).Name
+            };          
             return View(model);
         }
 

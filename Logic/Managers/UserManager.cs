@@ -43,6 +43,17 @@ namespace Logic.Managers
 
             };
             return user1;
-        }  
+        }
+        public User GetUserByID(int id)
+        {
+            DTO.UserDTO user1 = userDatabaseManager.GetUserByID(id);
+            User user = new User(user1.Name, user1.Email, user1.Password, productDatabaseManager, reviewDatabaseManager, bidDatabaseManager)
+            {
+                ID = user1.ID,
+                RegisterDate = user1.RegisterDate,
+                
+            };
+            return user;
+        }
     }
 }

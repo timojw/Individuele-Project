@@ -52,6 +52,24 @@ namespace Logic.Managers
         //    List<Bid> bids = new List<Bid>();
         //    BidDAO.
         //}
+        public List<Product> GetProductsByUser(int id)
+        {
+            List<Product> products = new List<Product>();
+            List<ProductDTO> list = productDAO.GetProductsByUser(id);
+            foreach (var product1 in list)
+            {
+                Product product = new Product()
+                {
+                    ID = product1.ID,
+                    Name = product1.Name,
+                    Available = product1.Available,
+                    UserID = product1.UserID,
+                    Descripion = product1.Description
+                };
+                products.Add(product);
+            }
+            return products;
+        }
         public List<ProductReview> GetAllReviews(Product product)
         {
             List<ProductReview> reviews = new List<ProductReview>();

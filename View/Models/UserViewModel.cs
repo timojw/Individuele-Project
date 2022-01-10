@@ -6,7 +6,7 @@ using Logic.Classes;
 
 namespace View.Models
 {
-    class UserViewModel
+    public class UserViewModel
     {
         [Key]
         public int ID { get; set; }

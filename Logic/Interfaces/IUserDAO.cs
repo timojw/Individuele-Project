@@ -7,5 +7,6 @@ namespace Logic.Interfaces
     {
         List<UserDTO> GetAllUsers();
         int AddUser(UserDTO userDTO);
+        UserDTO GetUserByID(int id);
     }
 }

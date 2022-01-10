@@ -4,14 +4,13 @@
     ViewData["Title"] = Model.Name;
 }
 
-<p><strong>@Model.Name</strong></p>
-<p>@Model.UserID.ToString()</p>
+<p><h4><strong>@Model.Name</strong></h4></p>
+<p><a href="https://localhost:44384/User/Index/@Model.UserID">@Model.UserName</a></p>
 <hr />
+<p>@Model.Description</p>
 <p>€@Model.Price</p>
 <p>&nbsp;</p>
-<p>@Model.Description</p>
-<p>&nbsp;</p>
-<p><a href="cart"><h4>Add To Cart</h4></a></p>
-<p><a href="buy"><h4>Buy Now</h4></a></p>
-<p>There are only @Model.Available left</p>
-<p>&nbsp;</p>
+<p style="color:#FF0000" ;>There are only @Model.Available left</p>
+<p><a href="cart">Add To Cart</a></p>
+<p><a href="buy">Buy Now</a></p>
+<hr />

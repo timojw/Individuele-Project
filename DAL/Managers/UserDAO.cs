@@ -41,7 +41,7 @@ namespace DAL.Managers
             }
             return users;
         }
-        public UserDTO GetUser(int id)
+        public UserDTO GetUserByID(int id)
         {
             UserDTO user = new();
             using (SqlConnection conn = new SqlConnection(this.connectionString))
