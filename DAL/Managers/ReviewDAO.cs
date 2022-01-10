@@ -76,6 +76,35 @@ namespace DAL.Managers
             return allReviews;
         }
 
+        public List<ProductReviewDTO> GetReviewByProduct(int id)
+        {
+            List<ProductReviewDTO> reviews = new();
+            using (SqlConnection conn = new SqlConnection(this.connectionString))
+            using (SqlCommand query = new SqlCommand("SELECT * FROM ProductReview WHERE [productID] = @id", conn))
+            {
+                query.Parameters.AddWithValue("@id", id);
+                query.Connection.Open();
+
+                using (SqlDataReader reader = query.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        ProductReviewDTO review = new ProductReviewDTO();
+
+                        review.ID = Convert.ToInt32(reader["ID"]);
+                        review.ReviewerID = Convert.ToInt32(reader["reviewerID"]);
+                        review.ProductID = Convert.ToInt32(reader["productID"]);
+                        review.Text = reader["text"].ToString();
+                        review.Stars = Convert.ToInt32(reader["stars"]);
+
+                        reviews.Add(review);
+                    }
+                    
+                }
+            }
+            return reviews;
+        }
+
         int IReviewDAO.AddReview(ProductReviewDTO ProductReviewDTO)
         {
             using (SqlConnection conn = new SqlConnection(this.connectionString))

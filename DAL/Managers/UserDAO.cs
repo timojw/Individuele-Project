@@ -14,27 +14,28 @@ namespace DAL.Managers
             List<UserDTO> users = new List<UserDTO>();
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
-                using (SqlCommand query = new SqlCommand("select * from User", conn))
+                using (SqlCommand query = new SqlCommand("SELECT * FROM [dbo].[User]", conn))
                 {
                     conn.Open();
 
                     var reader = query.ExecuteReader();
+
                     while (reader.Read())
                     {
-                        UserDTO user = new UserDTO();
-                        user.ID = reader.GetInt32(0);
-                        user.Name = reader.GetString(1);
-                        user.Email = reader.GetString(2);
-                        user.Password = reader.GetString(3);
-                        user.RegisterDate = reader.GetDateTime(4);
-                        user.Country = reader.GetString(5);
-                        user.State = reader.GetString(6);
-                        user.City = reader.GetString(7);
-                        user.Street = reader.GetString(8);
-                        user.HouseNumber = reader.GetInt32(9);
-                        user.PostalCode = reader.GetString(10);
-
-                        users.Add(user);
+                        users.Add(new UserDTO
+                        {
+                            ID = Convert.ToInt32(reader["ID"]),
+                            Name = reader["name"].ToString(),
+                            Email = reader["email"].ToString(),
+                            Password = reader["password"].ToString(),
+                            RegisterDate = (DateTime)reader["registerDate"],
+                            Country = reader["country"].ToString(),
+                            State = reader["state"].ToString(),
+                            City = reader["city"].ToString(),
+                            Street = reader["street"].ToString(),
+                            HouseNumber = Convert.ToInt32(reader["houseNumber"]),
+                            PostalCode = reader["postalCode"].ToString()
+                        });
                     }
                 }
             }
@@ -44,7 +45,7 @@ namespace DAL.Managers
         {
             UserDTO user = new();
             using (SqlConnection conn = new SqlConnection(this.connectionString))
-            using (SqlCommand query = new SqlCommand("SELECT * FROM User WHERE [ID] = @id", conn))
+            using (SqlCommand query = new SqlCommand("SELECT * FROM [dbo].[User] WHERE [ID] = @id", conn))
             {
                 query.Parameters.AddWithValue("@id", id);
                 query.Connection.Open();
@@ -64,11 +65,11 @@ namespace DAL.Managers
             return user;
         }
 
-        int IUserDAO.AddUser(UserDTO userDto)
+        public int AddUser(UserDTO userDto)
         {
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
-                using SqlCommand query = new SqlCommand("INSERT INTO [dbo].[User] ([Name], [Email], [Password], [RegisterDate], [Country], [State], [City], [Street], [HouseNumber], [PostalCode]) VALUES (@Name, @Email, @Password, @RegisterDate, @Country, @State, @City, @Street, @HouseNumber, @PostalCode" + "SELECT CAST(scope_identity() AS int)", conn);
+                using SqlCommand query = new SqlCommand("INSERT INTO [dbo].[User] ([name], [email], [password], [registerDate], [country], [state], [city], [street], [houseNumber], [postalCode]) VALUES (@Name, @Email, @Password, @RegisterDate, @Country, @State, @City, @Street, @HouseNumber, @PostalCode)" + "SELECT CAST(scope_identity() AS int)", conn);
                 conn.Open();
                 query.Parameters.AddWithValue("@Name", userDto.Name);
                 query.Parameters.AddWithValue("@Email", userDto.Email);
@@ -84,6 +85,16 @@ namespace DAL.Managers
                 var modified = query.ExecuteScalar();
                 userDto.ID = (int)modified;
                 return userDto.ID;
+            }
+        }
+        public void DeleteUser(UserDTO user)
+        {
+            using (SqlConnection conn = new SqlConnection(this.connectionString))
+            {
+                SqlCommand query = new SqlCommand("DELETE FROM [dbo].[User] WHERE [ID] = @id", conn);
+                query.Parameters.AddWithValue("@id", user.ID);
+                conn.Open();
+                query.ExecuteNonQuery();
             }
         }
     }

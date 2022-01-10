@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
+using Logic;
+using Logic.Classes;
 
 namespace View.Models
 {
@@ -15,7 +17,8 @@ namespace View.Models
         public int Available { get; set; }
         public decimal Price { get; set; }
         public decimal MinimumPrice { get; set; }
-        public List<BidViewModel> Bids { get; set; }
+        public List<Bid> Bids { get; set; }
+        public List<ProductReview> Reviews { get; set; }
         public DateTime Deadline { get; set; }
     }
 }

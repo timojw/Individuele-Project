@@ -5,13 +5,13 @@ using Logic.Interfaces;
 
 namespace Logic.Managers
 {
-    public class UserM2anager
+    public class UserManager
     {
         private IUserDAO userDatabaseManager;
         private IProductDAO productDatabaseManager;
         private IReviewDAO reviewDatabaseManager;
         private IBidDAO bidDatabaseManager;
-        public UserM2anager(IUserDAO _userDatabaseManager, IProductDAO _productDatabaseManager, IReviewDAO _reviewDatabaseManager, IBidDAO _bidDatabaseManager)
+        public UserManager(IUserDAO _userDatabaseManager, IProductDAO _productDatabaseManager, IReviewDAO _reviewDatabaseManager, IBidDAO _bidDatabaseManager)
         {
             this.userDatabaseManager = _userDatabaseManager;
             this.productDatabaseManager = _productDatabaseManager;
@@ -36,8 +36,8 @@ namespace Logic.Managers
         public User GetUser()
         {
             List<DTO.UserDTO> userList = new List<DTO.UserDTO>();
-            DTO.UserDTO user = userList[0];
-            //hardcoded user
+            DTO.UserDTO user = userList[1];     //user1
+            //DTO.UserDTO user = userList[10];  //user2
             User user1 = new(user.Name, user.Email, user.Password, productDatabaseManager, reviewDatabaseManager, bidDatabaseManager)
             {
 

@@ -50,15 +50,15 @@
                 <div class="col-md-12">
                     <div class="filters-content">
                         <div class="row grid">
-                            @if (Model[1].GetType() == Model[3].GetType())
+                           @foreach (var smallmodel in Model)
                             {
                                 <div class="col-lg-4 col-md-4 all des">
                                     <div class="product-item">
                                         <a href="#"><img src="assets/images/product_01.jpg" alt=""></a>
                                         <div class="down-content">
-                                            <a href="#"><h4>@Model[3].Name</h4></a>
-                                            <h6>$18.25</h6>
-                                            <p>ddddddddddddddddddddddddddddddddddddddddddddddddddd</p>
+                                            <a href="#"><h4>@smallmodel.Name</h4>
+                                            <h6>@smallmodel.Price.ToString()</h6>
+                                            <p>@smallmodel.Description</p></a>
                                             <ul class="stars">
                                                 <li><i class="fa fa-star"></i></li>
                                                 <li><i class="fa fa-star"></i></li>
@@ -66,105 +66,18 @@
                                                 <li><i class="fa fa-star"></i></li>
                                                 <li><i class="fa fa-star"></i></li>
                                             </ul>
-                                            <span>Reviews (12)</span>
+                                            @if (smallmodel.Reviews == null)
+                                            {
+                                                <span>Reviews (0)</span>
+                                            }
+                                            else
+                                            {
+                                                <span>Reviews (@smallmodel.Reviews.Count)</span>
+                                            }
                                         </div>
                                     </div>
-                                </div>
+                                </div>                           
                             }
-
-                            {
-
-                            }
-                            <div class="col-lg-4 col-md-4 all dev">
-                                <div class="product-item">
-                                    <a href="#"><img src="assets/images/product_02.jpg" alt=""></a>
-                                    <div class="down-content">
-                                        <a href="#"><h4>@Model[4].Name</h4></a>
-                                        <h6>$16.75</h6>
-                                        <p>Lorem ipsume dolor sit amet, adipisicing elite. Itaque, corporis nulla aspernatur.</p>
-                                        <ul class="stars">
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                        </ul>
-                                        <span>Reviews (24)</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 all gra">
-                                <div class="product-item">
-                                    <a href="#"><img src="assets/images/product_03.jpg" alt=""></a>
-                                    <div class="down-content">
-                                        <a href="#"><h4>@Model[5].Name</h4></a>
-                                        <h6>$32.50</h6>
-                                        <p>ddddfasdf</p>
-                                        <ul class="stars">
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                        </ul>
-                                        <span>Reviews (36)</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 all gra">
-                                <div class="product-item">
-                                    <a href="#"><img src="assets/images/product_04.jpg" alt=""></a>
-                                    <div class="down-content">
-                                        <a href="#"><h4>@Model[6].Name</h4></a>
-                                        <h6>$24.60</h6>
-                                        <p>Lorem ipsume dolor sit amet, adipisicing elite. Itaque, corporis nulla aspernatur.</p>
-                                        <ul class="stars">
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                        </ul>
-                                        <span>Reviews (48)</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 all dev">
-                                <div class="product-item">
-                                    <a href="#"><img src="assets/images/product_05.jpg" alt=""></a>
-                                    <div class="down-content">
-                                        <a href="#"><h4>@Model[7].Name</h4></a>
-                                        <h6>$18.75</h6>
-                                        <p>Lorem ipsume dolor sit amet, adipisicing elite. Itaque, corporis nulla aspernatur.</p>
-                                        <ul class="stars">
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                        </ul>
-                                        <span>Reviews (60)</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 all des">
-                                <div class="product-item">
-                                    <a href="#"><img src="assets/images/product_06.jpg" alt=""></a>
-                                    <div class="down-content">
-                                        <a href="#"><h4>@Model[8].Name</h4></a>
-                                        <h6>$12.50</h6>
-                                        <p>Lorem ipsume dolor sit amet, adipisicing elite. Itaque, corporis nulla aspernatur.</p>
-                                        <ul class="stars">
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                        </ul>
-                                        <span>Reviews (72)</span>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

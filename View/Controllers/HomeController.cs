@@ -16,32 +16,43 @@ namespace View.Controllers
 {
     public class HomeController : Controller       
     {
-        UserM2anager userManager;
+        UserManager userManager;
         ProductManager productManager;   
         public HomeController(IProductDAO iproductDAO, IUserDAO iuserDAO, IReviewDAO ireviewDAO, IBidDAO ibidDAO)
         {
-            userManager = new UserM2anager(iuserDAO, iproductDAO, ireviewDAO, ibidDAO);
-            
+            userManager = new UserManager(iuserDAO, iproductDAO, ireviewDAO, ibidDAO);
+            productManager = new ProductManager(iproductDAO, ireviewDAO, ibidDAO);
+
         }
 
         public IActionResult Index()
         {
             List<ProductViewModel> models = new();
-            foreach (var product in productManager.GetAllProducts())
+            List<Product> products = new List<Product>();
+            products = productManager.GetAllProducts();
+            products.Reverse();
+            foreach (var product in products)
             {
-                if (product.Available > 0 && models.Count < 7)
+                if (models.Count < 6)
                 {
-                    models.Add(new ProductViewModel()
+                    ProductViewModel model = new ProductViewModel();   
                     {
-                        ID = product.ID,
-                        Name = product.Name,
-                        UserID = product.UserID,
-                        //Bids 
-                        
-                    });
+                        model.ID = product.ID;
+                        model.Name = product.Name;
+                        model.UserID = product.UserID;
+                        model.Available = product.Available;
+                        model.Description = product.Descripion;
+                        //model.Price = product.Price;
+                    }
+                    foreach (var review in productManager.GetAllReviews(product))
+                    {
+                        model.Reviews.Add(review);
+                    }
+                    models.Add(model);                            
                 }
             }
-            return View();
+            
+            return View(models);
         }
 
         public IActionResult Privacy()

@@ -8,9 +8,11 @@ namespace Logic.Interfaces
         List<ProductReviewDTO> GetAllProductReviews();
         List<ReviewDTO> GetAllReviews();
         List<UserReviewDTO> GetAllUserReviews();
+        List<ProductReviewDTO> GetReviewByProduct(int id);
         int AddReview(ProductReviewDTO productReviewDTO);
         int AddReview(UserReviewDTO userReviewDTO);
         void DeleteReview(UserReviewDTO userReview);
         void DeleteReview(ProductReviewDTO productReview);
+
     }
 }

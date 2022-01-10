@@ -21,35 +21,35 @@ namespace DAL.Managers
             List<ProductDTO> products = new List<ProductDTO>();
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
-                using (SqlCommand query = new SqlCommand("select * from Product", conn))
+                using (SqlCommand query = new SqlCommand("select * from [dbo].[Product]", conn))
                 {
                     conn.Open();
 
                     var reader = query.ExecuteReader();
                     while (reader.Read())
                     {
-                        ProductDTO product = new ProductDTO();
-
-                        product.ID = reader.GetInt32(0);
-                        product.Name = reader.GetString(1);
-                        product.Description = reader.GetString(2);
-                        product.UserID = reader.GetInt32(3);
-                        product.Status = reader.GetInt32(4);
-                        product.OrderID = reader.GetInt32(5);
-                        product.ProductType = reader.GetInt32(6);
-                        product.Price = reader.GetDecimal(7);
-                        product.MinimumPrice = reader.GetDecimal(8);
-                        //product.Deadline = reader.GetDateTime(9);
-                        //product.Available = reader.GetInt32(10);
-
-                        products.Add(product);
+                        products.Add(new ProductDTO
+                        {
+                            ID = Convert.ToInt32(reader["ID"]),
+                            Name = reader["name"].ToString(),
+                            Description = reader["description"].ToString(),
+                            UserID = Convert.ToInt32(reader["userID"]),
+                            Status = Convert.ToInt32(reader["status"]),
+                            OrderID = Convert.ToInt32(reader["orderID"]),
+                            ProductType = Convert.ToInt32(reader["productType"]),
+                            Price = Convert.ToDecimal(reader["regularproduct_price"]),
+                            MinimumPrice = Convert.ToDecimal(reader["biddingproduct_minimumPrice"]),
+                            //product. = Convert.ToDecimal(reader["biddingproduct_highestBid"]);
+                            Deadline = (DateTime)reader["biddingproduct_deadline"],
+                            Available = Convert.ToInt32(reader["available"])
+                        });
                     }
                 }
             }
             return products;
         }
         public ProductDTO
-            GetProduct(int id)
+        GetProduct(int id)
         {
             ProductDTO product = new();
             using (SqlConnection conn = new SqlConnection(this.connectionString))
