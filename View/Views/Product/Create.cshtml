@@ -1,0 +1,37 @@
+﻿
+@model ProductViewModel
+@{
+    ViewData["Title"] = "Add Product";
+}
+
+<html>
+    <body>
+        <h1>Add Product</h1>
+        <form action="/action_page.php">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name"><br><br>
+            <label for="desc">Description:</label>
+            <input type="text" id="desc" name="desc"><br><br>
+            <label for="desc">Description:</label>
+            <input type="text" id="desc" name="desc"><br><br>
+
+            <p>Please type of product:</p>
+            <input type="radio" id="reg" name="product" value="reg">
+            <label for="reg">Regular Product</label><br>
+            <input type="radio" id="auc" name="product" value="auc">
+            <label for="auc">Auction Product</label><br><br>
+            @*<script>
+                function whichselected() {
+                    if (document.getElementById("reg").checked = true) {
+                        <p>deez</p>
+                    }
+                }
+                </script>*@
+            <input type="submit" value="Submit">
+        </form>
+        <p>
+            Click the "Submit" button and the form-data will be sent to a page on the
+            server called "action_page.php".
+        </p>
+    </body>
+</html>
