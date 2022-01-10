@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Logic.Classes
 {
-    class Wishlist
+    public class Wishlist
     {
         public Wishlist()
         {

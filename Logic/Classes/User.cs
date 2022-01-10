@@ -8,7 +8,7 @@ using Logic.DTO;
 
 namespace Logic
 {
-    class User
+    public class User
     {
         [Key]
         public int ID { get; set; }

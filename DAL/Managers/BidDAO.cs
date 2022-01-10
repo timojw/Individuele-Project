@@ -38,7 +38,7 @@ namespace DAL.Managers
         {
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
-                using SqlCommand query = new SqlCommand("INSERT INTO [dbo].[Bid] ([productID], [userID], [amount]) VALUES (@productID, @userID, @amount", conn);
+                using SqlCommand query = new SqlCommand("INSERT INTO [dbo].[Bid] ([productID], [userID], [amount]) VALUES (@productID, @userID, @amount" + "SELECT CAST(scope_identity() AS int)", conn);
                 conn.Open();
 
                 query.Parameters.AddWithValue("@productID", BidDTO.ProductID);

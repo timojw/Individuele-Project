@@ -5,7 +5,7 @@ using System.Text;
 
 namespace View.Models
 {
-    class Review
+    class ReviewViewModel
     {
         [Key]
         public int ID { get; set; }

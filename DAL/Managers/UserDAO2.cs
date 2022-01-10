@@ -7,7 +7,7 @@ using Logic.Interfaces;
 
 namespace DAL.Managers
 {
-    public class UserDAO : DatabaseManager, IUserDAO
+    public class UserDAO2 : DatabaseManager, IUserDAO
     {
         public List<UserDTO> GetAllUsers()
         {

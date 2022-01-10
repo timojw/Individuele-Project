@@ -5,7 +5,7 @@ using System.Text;
 
 namespace View.Models
 {
-    class Wishlist
+    class WishlistViewModel
     {
 
         [Key]

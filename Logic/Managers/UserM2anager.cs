@@ -5,20 +5,20 @@ using Logic.Interfaces;
 
 namespace Logic.Managers
 {
-    class UserManager
+    public class UserM2anager
     {
         private IUserDAO userDatabaseManager;
         private IProductDAO productDatabaseManager;
         private IReviewDAO reviewDatabaseManager;
         private IBidDAO bidDatabaseManager;
-        public UserManager(IUserDAO _userDatabaseManager, IProductDAO _productDatabaseManager, IReviewDAO _reviewDatabaseManager, IBidDAO _bidDatabaseManager)
+        public UserM2anager(IUserDAO _userDatabaseManager, IProductDAO _productDatabaseManager, IReviewDAO _reviewDatabaseManager, IBidDAO _bidDatabaseManager)
         {
             this.userDatabaseManager = _userDatabaseManager;
             this.productDatabaseManager = _productDatabaseManager;
             this.reviewDatabaseManager = _reviewDatabaseManager;
             this.bidDatabaseManager = _bidDatabaseManager;
         }
-        User MakeUser(string _name, string _email, string _password)
+        public User MakeUser(string _name, string _email, string _password)
         {
 
             int ID = userDatabaseManager.AddUser(new DTO.UserDTO()
@@ -28,12 +28,21 @@ namespace Logic.Managers
                 Password = _password,
                 RegisterDate = DateTime.Now
             });
-            
+
             User user = new User(_name, _email, _password, productDatabaseManager, reviewDatabaseManager, bidDatabaseManager);
             user.ID = ID;
             return user;
         }
+        public User GetUser()
+        {
+            List<DTO.UserDTO> userList = new List<DTO.UserDTO>();
+            DTO.UserDTO user = userList[0];
+            //hardcoded user
+            User user1 = new(user.Name, user.Email, user.Password, productDatabaseManager, reviewDatabaseManager, bidDatabaseManager)
+            {
 
-        
+            };
+            return user1;
+        }  
     }
 }

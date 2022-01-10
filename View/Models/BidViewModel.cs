@@ -4,7 +4,7 @@ using System.Text;
 
 namespace View.Models
 {
-    class Bid
+    public class BidViewModel
     {
         public int ProductID { get; set; }
         public int UserID { get; set; }

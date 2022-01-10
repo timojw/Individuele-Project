@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Logic
 {
-    class UserReview:Review
+    public class UserReview:Review
     {
         public int ReviewedID { get; set; }
 

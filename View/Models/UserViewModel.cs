@@ -5,7 +5,7 @@ using System.Text;
 
 namespace View.Models
 {
-    class User
+    class UserViewModel
     {
         [Key]
         public int ID { get; set; }
@@ -20,7 +20,7 @@ namespace View.Models
         public int HouseNumber { get; set; }
         public string PostalCode { get; set; }
 
-        public User(string _name, string _email, string _password)
+        public UserViewModel(string _name, string _email, string _password)
         {
             //test 2
             this.Name = _name;

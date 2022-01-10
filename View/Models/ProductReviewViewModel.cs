@@ -4,12 +4,12 @@ using System.Text;
 
 namespace View.Models
 {
-    class ProductReview:Review
+    class ProductReviewViewModel:ReviewViewModel
     {
         private string returnmessage;
         public int ProductID { get; set; }
 
-        public ProductReview(int _reviewerID, int _productID, string _text, string _stars)
+        public ProductReviewViewModel(int _reviewerID, int _productID, string _text, string _stars)
         {
             this.ReviewerID = _reviewerID;
             this.ProductID = _productID;

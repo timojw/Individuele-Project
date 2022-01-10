@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Logic
 {
-    class Review
+    public class Review
     {
         [Key]
         public int ID { get; set; }

@@ -36,7 +36,7 @@ namespace DAL.Managers
         {
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
-                using SqlCommand query = new SqlCommand("INSERT INTO [dbo].[Order] ([userID], [status], [time]) VALUES (@userID, @status, @time", conn);
+                using SqlCommand query = new SqlCommand("INSERT INTO [dbo].[Order] ([userID], [status], [time]) VALUES (@userID, @status, @time" + "SELECT CAST(scope_identity() AS int)", conn);
                 conn.Open();
 
                 query.Parameters.AddWithValue("@userID", OrderDTO.UserID);

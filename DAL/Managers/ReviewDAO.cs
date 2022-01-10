@@ -80,7 +80,7 @@ namespace DAL.Managers
         {
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
-                using SqlCommand query = new SqlCommand("INSERT INTO [dbo].[ProductReview] ([reviewerID], [productID], [text], [stars]) VALUES (@reviewerID, @productID, @text, @stars", conn);
+                using SqlCommand query = new SqlCommand("INSERT INTO [dbo].[ProductReview] ([reviewerID], [productID], [text], [stars]) VALUES (@reviewerID, @productID, @text, @stars" + "SELECT CAST(scope_identity() AS int)", conn);
                 conn.Open();
 
                 query.Parameters.AddWithValue("@reviewerID", ProductReviewDTO.ReviewerID);
@@ -99,7 +99,7 @@ namespace DAL.Managers
         {
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
-                using SqlCommand query = new SqlCommand("INSERT INTO [dbo].[UserReview] ([reviewerID], [reviewedID], [text], [stars]) VALUES (@reviewerID, @reviewedID, @text, @stars", conn);
+                using SqlCommand query = new SqlCommand("INSERT INTO [dbo].[UserReview] ([reviewerID], [reviewedID], [text], [stars]) VALUES (@reviewerID, @reviewedID, @text, @stars" + "SELECT CAST(scope_identity() AS int)", conn);
                 conn.Open();
 
                 query.Parameters.AddWithValue("@reviewerID", userReviewDTO.ReviewerID);
