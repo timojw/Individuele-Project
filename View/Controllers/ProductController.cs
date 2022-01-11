@@ -13,12 +13,13 @@ namespace View.Controllers
 {
     public class ProductController : Controller
     {
-        ProductManager productManager;
         UserManager userManager;
-        public ProductController(IProductDAO productDatabaseManager, IReviewDAO reviewDatabaseManager, IBidDAO bidDatabaseManager, IUserDAO iuserdao)
+        ProductManager productManager;
+        public ProductController(IProductDAO iproductDAO, IUserDAO iuserDAO, IReviewDAO ireviewDAO, IBidDAO ibidDAO)
         {
-            this.productManager = new ProductManager(productDatabaseManager, reviewDatabaseManager, bidDatabaseManager);
-            this.userManager = new UserManager(iuserdao, productDatabaseManager, reviewDatabaseManager, bidDatabaseManager);
+            userManager = new UserManager(iuserDAO, iproductDAO, ireviewDAO, ibidDAO);
+            productManager = new ProductManager(iproductDAO, ireviewDAO, ibidDAO);
+
         }
         public IActionResult Index(int id)
         {
@@ -36,12 +37,22 @@ namespace View.Controllers
         }
 
         public IActionResult Create()
-        {
-            Product product = new Product();
+        {            
             return View();
         }
-
-      
-        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create([FromForm] ProductViewModel viewModel)
+        {
+            try
+            {
+                productManager.AddProduct(new Product() { Name = viewModel.Name, Descripion = viewModel.Description, Available = viewModel.Available, Price = viewModel.Price, UserID = 1, Deadline = DateTime.Now.AddDays(-1000) });
+                return RedirectToAction("Index", "Home");
+            }
+            catch (Exception e)
+            {
+                return View();
+            }
+        }       
     }
 }

@@ -69,7 +69,7 @@ namespace DAL.Managers
         {
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
-                using SqlCommand query = new SqlCommand("INSERT INTO [dbo].[User] ([name], [email], [password], [registerDate], [country], [state], [city], [street], [houseNumber], [postalCode]) VALUES (@Name, @Email, @Password, @RegisterDate, @Country, @State, @City, @Street, @HouseNumber, @PostalCode)" + "SELECT CAST(scope_identity() AS int)", conn);
+                using SqlCommand query = new SqlCommand("INSERT INTO User (name, email, [password], [registerDate], [country], [state], [city], [street], [houseNumber], [postalCode]) VALUES (@Name, @Email, @Password, @RegisterDate, @Country, @State, @City, @Street, @HouseNumber, @PostalCode)" + "SELECT CAST(scope_identity() AS int)", conn);
                 conn.Open();
                 query.Parameters.AddWithValue("@Name", userDto.Name);
                 query.Parameters.AddWithValue("@Email", userDto.Email);

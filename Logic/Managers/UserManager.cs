@@ -36,8 +36,8 @@ namespace Logic.Managers
         public User GetUser()
         {
             List<DTO.UserDTO> userList = new List<DTO.UserDTO>();
-            DTO.UserDTO user = userList[1];     //user1
-            //DTO.UserDTO user = userList[10];  //user2
+            DTO.UserDTO user = userList[0];     //user1
+            //DTO.UserDTO user = userList[1];  //user2
             User user1 = new(user.Name, user.Email, user.Password, productDatabaseManager, reviewDatabaseManager, bidDatabaseManager)
             {
 

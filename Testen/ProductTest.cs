@@ -22,9 +22,7 @@ namespace Individueel
                 Available = 19,
                 Price = 420,
                 OrderID = 34289,
-                Deadline = DateTime.Now.AddDays(-1000)
-                
-
+                Deadline = DateTime.Now.AddDays(-1000)               
             };
             DAL.Managers.ProductDAO dao = new DAL.Managers.ProductDAO();
 

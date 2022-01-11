@@ -83,5 +83,20 @@ namespace Logic.Managers
             }
             return reviews;
         }
+        public void AddProduct(Product product)
+        {
+            ProductDTO productDto = new ProductDTO()
+            {
+                ID = product.ID,
+                Name = product.Name,
+                Description = product.Descripion,
+                UserID = product.UserID,
+                Available = product.Available,
+                Price = product.Price,
+                MinimumPrice = product.MinimumPrice,
+                Deadline = product.Deadline            
+            };
+            productDAO.AddProduct(productDto);
+        }
     }
 }
