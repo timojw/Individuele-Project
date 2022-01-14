@@ -84,7 +84,7 @@ namespace DAL.Managers
             }
             return products;
         }
-        public ProductDTO GetProduct(int id)
+        public ProductDTO GetProductByID(int id)
         {
             ProductDTO product = new ProductDTO();
             using (SqlConnection conn = new SqlConnection(this.connectionString))

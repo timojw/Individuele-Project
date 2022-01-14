@@ -36,7 +36,7 @@ namespace Logic.Managers
         }
         public Product GetProduct(int id)
         {
-            ProductDTO product1 = productDAO.GetProduct(id);
+            ProductDTO product1 = productDAO.GetProductByID(id);
             Product product = new Product()
             {
                 ID = product1.ID,

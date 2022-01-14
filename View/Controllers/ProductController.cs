@@ -15,10 +15,10 @@ namespace View.Controllers
     {
         UserManager userManager;
         ProductManager productManager;
-        public ProductController(IProductDAO iproductDAO, IUserDAO iuserDAO, IReviewDAO ireviewDAO, IBidDAO ibidDAO)
+        public ProductController(ProductManager _productManager, UserManager _userManager)
         {
-            userManager = new UserManager(iuserDAO, iproductDAO, ireviewDAO, ibidDAO);
-            productManager = new ProductManager(iproductDAO, ireviewDAO, ibidDAO);
+            userManager = _userManager;
+            productManager = _productManager;
 
         }
         public IActionResult Index(int id)

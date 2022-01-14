@@ -7,7 +7,7 @@ namespace Logic.Interfaces
     {
         List<ProductDTO> GetAllProducts();
         int AddProduct(ProductDTO productDTO);
-        ProductDTO GetProduct(int ID);
+        ProductDTO GetProductByID(int ID);
         List<ProductDTO> GetProductsByUser(int ID);
     }
 }

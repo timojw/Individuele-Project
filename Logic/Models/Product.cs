@@ -12,6 +12,8 @@ namespace Logic.Classes
         public int UserID { get; set; }
         public string Name { get; set; }
         public int Available { get; set; }
+        public int OrderID { get; set; }
+        public int Status { get; set; }
         public string Descripion { get; set; }
         public decimal Price { get; set; }
         public decimal MinimumPrice { get; set; }

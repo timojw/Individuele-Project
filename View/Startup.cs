@@ -14,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using DAL.Managers;
 using Logic.Interfaces;
+using Logic.Managers;
 
 namespace View
 {
@@ -43,6 +44,8 @@ namespace View
             services.AddScoped<IReviewDAO, ReviewDAO>();
             services.AddScoped<IUserDAO, UserDAO>();
             services.AddScoped<IWishlistDAO, WishlistDAO>();
+            services.AddScoped<UserManager>();
+            services.AddScoped<ProductManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
