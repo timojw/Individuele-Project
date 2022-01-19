@@ -8,9 +8,27 @@
 <p><a href="https://localhost:44384/User/Index/@Model.UserID">@Model.UserName</a></p>
 <hr />
 <p>@Model.Description</p>
-<p>€@Model.Price</p>
 <p>&nbsp;</p>
+<p>€@Model.Price</p>
 <p style="color:#FF0000" ;>There are only @Model.Available left</p>
 <p><a href="cart">Add To Cart</a></p>
 <p><a href="buy">Buy Now</a></p>
+<p><a href="https://localhost:44384/Product/AddReview/@Model.ID">Add Review</a></p>
 <hr />
+
+@if(Model.Reviews != null)
+{
+    @foreach (var  review in Model.Reviews)
+    {
+        <span><a href="https://localhost:44384/User/Index/@review.ReviewerID">[@review.ReviewerName]</a></span>
+        <span>@review.Text</span>
+        @if (review.Stars > 1)
+        {
+            <p>Star: @review.Stars</p>
+        }
+        else
+        {
+            <p>Stars: @review.Stars</p>
+        }
+    }
+}

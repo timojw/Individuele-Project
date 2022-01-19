@@ -19,7 +19,7 @@ namespace View.Models
         public decimal Price { get; set; }
         public decimal MinimumPrice { get; set; }
         public List<Bid> Bids { get; set; }
-        public List<ProductReview> Reviews { get; set; }
+        public List<ReviewViewModel> Reviews { get; set; }
         public DateTime Deadline { get; set; }
     }
 }

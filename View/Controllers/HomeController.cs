@@ -42,11 +42,25 @@ namespace View.Controllers
                         model.UserID = product.UserID;
                         model.Available = product.Available;
                         model.Description = product.Descripion;
+                        
                         //model.Price = product.Price;
                     }
+                    model.Reviews = new List<ReviewViewModel>();
                     foreach (var review in productManager.GetAllReviews(product))
-                    {
-                        model.Reviews.Add(review);
+                    { 
+                        if (model.Reviews != null)
+                        {
+                            ReviewViewModel review1 = new ReviewViewModel();
+                            {
+                                review1.Id = review.ID;
+                                review1.Stars = review.Stars;
+                                review1.Text = review.Text;
+                                review1.ReviewerID = review.ReviewerID;
+                                review1.ProductID = product.ID;
+                                review1.ReviewerName = userManager.GetUserByID(review.ReviewerID).Name;
+                            }
+                        model.Reviews.Add(review1);
+                        }
                     }
                     models.Add(model);                            
                 }

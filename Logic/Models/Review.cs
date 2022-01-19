@@ -10,8 +10,8 @@ namespace Logic
         [Key]
         public int ID { get; set; }
         public int ReviewerID { get; set; }
-        protected string Text { get; set; }
-        protected int Stars { get; set; }
+        public string Text { get; set; }
+        public int Stars { get; set; }
 
         protected string changeText(string tempText)
         {

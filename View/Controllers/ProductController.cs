@@ -25,14 +25,29 @@ namespace View.Controllers
         {
             var product = productManager.GetProduct(id);
             var model = new ProductViewModel()
-            { 
+            {
+                ID = product.ID,
                 Name = product.Name,
                 Description = product.Descripion,
                 //Price = product.Price,
                 Available = product.Available,
                 UserID = product.UserID,
-                UserName = userManager.GetUserByID(product.UserID).Name
-            };          
+                UserName = userManager.GetUserByID(product.UserID).Name,
+                Reviews = new List<ReviewViewModel>()
+            };
+            foreach (var review in productManager.GetAllReviews(product))
+            {
+                ReviewViewModel review1 = new ReviewViewModel();
+                {
+                    review1.Id = review.ID;
+                    review1.Stars = review.Stars;
+                    review1.Text = review.Text;
+                    review1.ReviewerID = review.ReviewerID;
+                    review1.ProductID = product.ID;
+                    review1.ReviewerName = userManager.GetUserByID(review.ReviewerID).Name;
+                }
+                model.Reviews.Add(review1);
+            }
             return View(model);
         }
 
@@ -53,6 +68,33 @@ namespace View.Controllers
             {
                 return View();
             }
-        }       
+        }
+
+        public IActionResult AddReview(int id)
+        {
+            var product = productManager.GetProduct(id);
+            var user = userManager.GetUser();
+            ReviewViewModel model = new ReviewViewModel()
+            {
+                ProductID = id,
+                ReviewerID = user.ID,
+                ReviewerName = user.Name
+            };
+            return View(model);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult AddReview([FromForm] ReviewViewModel viewModel)
+        {
+            try
+            {
+                productManager.AddReview(new Logic.ProductReview(viewModel.ReviewerID, viewModel.ProductID, viewModel.Text, viewModel.Stars));
+                return RedirectToAction("Index", "Home");
+            }
+            catch (Exception e)
+            {
+                return View();
+            }
+        }
     }
 }

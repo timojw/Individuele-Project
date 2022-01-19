@@ -50,32 +50,49 @@
                 <div class="col-md-12">
                     <div class="filters-content">
                         <div class="row grid">
-                           @foreach (var smallmodel in Model)
+                            @foreach (var smallmodel in Model)
                             {
-                                <div class="col-lg-4 col-md-4 all des">
-                                    <div class="product-item">
-                                        <div class="down-content">
-                                            <a href="Product/Index/@smallmodel.ID"><h4>@smallmodel.Name</h4>
-                                            <h6>@smallmodel.Price.ToString()</h6>
-                                            <p>@smallmodel.Description</p></a>
-                                            <ul class="stars">
-                                                <li><i class="fa fa-star"></i</li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                            </ul>
-                                            @if (smallmodel.Reviews == null)
-                                            {
-                                                <span>Reviews (0)</span>
-                                            }
-                                            else
-                                            {
+                            <div class="col-lg-4 col-md-4 all des">
+                                <div class="product-item">
+                                    <div class="down-content">
+                                        <a href="Product/Index/@smallmodel.ID"><h4>@smallmodel.Name</h4>
+                                        <h6>€@smallmodel.Price.ToString()</h6>
+                                        <p>@smallmodel.Description</p></a>
+                                        @if (smallmodel.Reviews.Count == 0 || smallmodel.Reviews == null)
+                                        {
+                                            <span>Reviews (0)</span>
+                                        }
+                                        else
+                                        {
+                                            var i = 0;
+                                            @foreach (var review in smallmodel.Reviews)
+                                                {  
+                                                @if(review.Stars > 3)
+                                                    {
+                                                        i++;
+                                                    }
+                                                @if(review.Stars < 3)
+                                                    {
+                                                        i--;
+                                                    }
+                                                }
                                                 <span>Reviews (@smallmodel.Reviews.Count)</span>
-                                            }
-                                        </div>
+                                                @if(i > 0)
+                                                {
+                                                    <span> positief</span>
+                                                }
+                                                @if(i < 0)
+                                                {
+                                                    <span> negatief</span>
+                                                }
+                                                @if(i == 0)
+                                                {
+                                                    <span> zijn neutraal</span>
+                                                }
+                                        }
                                     </div>
-                                </div>                           
+                                </div>
+                            </div>                           
                             }
                         </div>
                     </div>

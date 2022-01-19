@@ -35,13 +35,8 @@ namespace Logic.Managers
         }
         public User GetUser()
         {
-            List<DTO.UserDTO> userList = new List<DTO.UserDTO>();
-            DTO.UserDTO user = userList[0];     //user1
-            //DTO.UserDTO user = userList[1];  //user2
-            User user1 = new(user.Name, user.Email, user.Password, productDatabaseManager, reviewDatabaseManager, bidDatabaseManager)
-            {
-
-            };
+            DTO.UserDTO user = userDatabaseManager.GetUserByID(1);
+            User user1 = new User(user.Name, user.Email, user.Password, productDatabaseManager, reviewDatabaseManager, bidDatabaseManager) { ID = user.ID};
             return user1;
         }
         public User GetUserByID(int id)

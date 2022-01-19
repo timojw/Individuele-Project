@@ -98,5 +98,16 @@ namespace Logic.Managers
             };
             productDAO.AddProduct(productDto);
         }
+        public void AddReview(ProductReview review)
+        {
+            ProductReviewDTO reviewDto = new ProductReviewDTO()
+            {
+                Stars = review.Stars,
+                ProductID = review.ProductID,
+                ReviewerID = review.ReviewerID,
+                Text = review.Text
+            };
+            reviewDAO.AddReview(reviewDto);
+        }
     }
 }

@@ -105,11 +105,12 @@ namespace DAL.Managers
             return reviews;
         }
 
-        int IReviewDAO.AddReview(ProductReviewDTO ProductReviewDTO)
+        public int AddReview(ProductReviewDTO ProductReviewDTO)
         {
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
-                using SqlCommand query = new SqlCommand("INSERT INTO [dbo].[ProductReview] ([reviewerID], [productID], [text], [stars]) VALUES (@reviewerID, @productID, @text, @stars" + "SELECT CAST(scope_identity() AS int)", conn);
+                using SqlCommand query = new SqlCommand("INSERT INTO [dbo].[ProductReview] ([reviewerID], [productID], [text], [stars]) VALUES (@reviewerID, @productID, @text, @stars)", conn);
+                {
                 conn.Open();
 
                 query.Parameters.AddWithValue("@reviewerID", ProductReviewDTO.ReviewerID);
@@ -117,18 +118,18 @@ namespace DAL.Managers
                 query.Parameters.AddWithValue("@text", ProductReviewDTO.Text);
                 query.Parameters.AddWithValue("@stars", ProductReviewDTO.Stars);
 
-
-                var modified = query.ExecuteScalar();
-                ProductReviewDTO.ID = (int)modified;
-                return ProductReviewDTO.ID;
+                Console.WriteLine(query);
+                query.ExecuteNonQuery();
+                return 1;
+                }
             }
         }
 
-        int IReviewDAO.AddReview(UserReviewDTO userReviewDTO)
+        public int AddReview(UserReviewDTO userReviewDTO)
         {
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
-                using SqlCommand query = new SqlCommand("INSERT INTO [dbo].[UserReview] ([reviewerID], [reviewedID], [text], [stars]) VALUES (@reviewerID, @reviewedID, @text, @stars" + "SELECT CAST(scope_identity() AS int)", conn);
+                using SqlCommand query = new SqlCommand("INSERT INTO [dbo].[UserReview] ([reviewerID], [reviewedID], [text], [stars]) VALUES (@reviewerID, @reviewedID, @text, @stars)" + "SELECT CAST(scope_identity() AS int)", conn);
                 conn.Open();
 
                 query.Parameters.AddWithValue("@reviewerID", userReviewDTO.ReviewerID);
@@ -164,7 +165,5 @@ namespace DAL.Managers
                 query.ExecuteNonQuery();
             }
         }
-
-
     }
 }
