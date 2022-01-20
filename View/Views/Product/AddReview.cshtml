@@ -15,24 +15,22 @@
             </div>
             <div class="form-group">
                 <label asp-for="Stars" class="control-label"></label>
-                <input asp-for="Stars" class="form-control" />
+                <input asp-for="Stars" min="1" max="5" value="3" class="form-control" />
                 <span asp-validation-for="Stars" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ProductID" class="control-label"></label>
-                <input asp-for="ProductID" class="control-label"></input>
-                <span asp-validation-for="ProductID" class="text-danger"></span>
+               @* <label asp-for="ProductID" type="hidden" class="control-label"></label>*@
+                <input asp-for="ProductID" type="hidden" class="control-label"></>
+                <span asp-validation-for="ProductID" type="hidden" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ReviewerID" class="control-label"></label>
-                <input asp-for="ReviewerID" class="control-label"></input>
-                <span asp-validation-for="ReviewerID" class="text-danger"></span>
+               @* <label asp-for="ReviewerID" type="hidden" class="control-label"></label>*@
+                <input asp-for="ReviewerID" type="hidden" class="control-label"></>
+                <span asp-validation-for="ReviewerID" type="hidden" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="AddReview" class="btn btn-primary" />
             </div>
-
-           
         </form>
     </body>
 </html>

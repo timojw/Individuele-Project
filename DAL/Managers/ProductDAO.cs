@@ -107,7 +107,6 @@ namespace DAL.Managers
                         product.OrderID = Convert.ToInt32(reader["orderID"]);
                         product.ProductType = Convert.ToInt32(reader["productType"]);
                         product.MinimumPrice = Convert.ToDecimal(reader["biddingproduct_minimumPrice"]);
-                        //product. = Convert.ToDecimal(reader["biddingproduct_highestBid"]);
                         product.Deadline = (DateTime)reader["biddingproduct_deadline"];
                         product.Available = Convert.ToInt32(reader["available"]);
                     }

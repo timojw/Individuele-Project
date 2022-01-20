@@ -29,7 +29,7 @@ namespace View.Controllers
                 ID = product.ID,
                 Name = product.Name,
                 Description = product.Descripion,
-                //Price = product.Price,
+                Price = product.Price,
                 Available = product.Available,
                 UserID = product.UserID,
                 UserName = userManager.GetUserByID(product.UserID).Name,

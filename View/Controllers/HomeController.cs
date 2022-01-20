@@ -42,8 +42,7 @@ namespace View.Controllers
                         model.UserID = product.UserID;
                         model.Available = product.Available;
                         model.Description = product.Descripion;
-                        
-                        //model.Price = product.Price;
+                        model.Price = product.Price;
                     }
                     model.Reviews = new List<ReviewViewModel>();
                     foreach (var review in productManager.GetAllReviews(product))

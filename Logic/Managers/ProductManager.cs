@@ -28,7 +28,8 @@ namespace Logic.Managers
                     Name = product1.Name,
                     Available = product1.Available,
                     UserID = product1.UserID,
-                    Descripion = product1.Description
+                    Descripion = product1.Description,
+                    Price = product1.Price
                 };
                 products.Add(product);
             }
@@ -43,7 +44,8 @@ namespace Logic.Managers
                 Name = product1.Name,
                 Available = product1.Available,
                 UserID = product1.UserID,
-                Descripion = product1.Description
+                Descripion = product1.Description,
+                Price= product1.Price
             };            
             return product;
         }
@@ -64,7 +66,8 @@ namespace Logic.Managers
                     Name = product1.Name,
                     Available = product1.Available,
                     UserID = product1.UserID,
-                    Descripion = product1.Description
+                    Descripion = product1.Description,
+                    Price = product1.Price
                 };
                 products.Add(product);
             }
