@@ -11,6 +11,9 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["API Individueel/API Individueel.csproj", "API Individueel/"]
+COPY ["Abstraction Layer/Abstraction Layer.csproj", "Abstraction Layer/"]
+COPY ["DTO Layer/DTO Layer.csproj", "DTO Layer/"]
+COPY ["DAL/DAL Layer.csproj", "DAL/"]
 RUN dotnet restore "API Individueel/API Individueel.csproj"
 COPY . .
 WORKDIR "/src/API Individueel"
