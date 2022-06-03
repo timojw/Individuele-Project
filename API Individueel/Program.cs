@@ -42,6 +42,19 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+try
+{
+    using (IServiceScope serviceScope = app.Services.GetService<IServiceScopeFactory>().CreateScope())
+    {
+        DbContext context = serviceScope.ServiceProvider.GetRequiredService<DALContext>();
+        context.Database.Migrate();
+    }
+}
+catch
+{
+    Console.WriteLine("An error occured during EF Migration, migration aborted");
+}
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
