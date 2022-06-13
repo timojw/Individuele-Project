@@ -5,12 +5,17 @@ using DAL_Layer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using DALContext = DAL_Layer.DALContext;
+using DAL_Layer;
+using DAL.Model;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddScoped<IDelivererCollection, DelivererDAL>();
 builder.Services.AddScoped<IDelivererCreation, DelivererDAL>();
+builder.Services.AddScoped<IOrderCollection, OrderDAL>();
+builder.Services.AddScoped<IOrderCreation, OrderDAL>();
+
 
 builder.Services.AddDbContext<DALContext>(opt =>
 {
@@ -34,6 +39,9 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 var app = builder.Build();
+
+//builder.Services.AddScoped<IDelivererCollection>, DelivererDAL();
+//builder.Services.AddScoped<IDelivererCreation>, DelivererDAL();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

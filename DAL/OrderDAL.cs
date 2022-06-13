@@ -11,8 +11,12 @@ using DTO_Layer;
 
 namespace DAL.Model
 {
-    class OrderDAL : IOrderCollection, IOrderCreation
+    public class OrderDAL : IOrderCollection, IOrderCreation
     {
+        public OrderDAL(DALContext Context)
+        {
+            _context = Context;
+        }
         public readonly DALContext _context;
 
         public List<OrderDTO> GetAllOrders()
