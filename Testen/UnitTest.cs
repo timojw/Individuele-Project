@@ -5,10 +5,10 @@ using System.Collections.Generic;
 namespace Testen
 {
     [TestClass]
-    public class UnitTest1
+    public class UnitTest
     {
         public Mockdal mock;
-        public UnitTest1()
+        public UnitTest()
         {
             mock = new Mockdal();
         }
