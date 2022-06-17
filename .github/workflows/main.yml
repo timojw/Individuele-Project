@@ -20,7 +20,7 @@ jobs:
     - name: Build
       run: dotnet build --no-restore "./API Individueel//"
     - name: Test
-      run: dotnet test --no-build --verbosity normal "./API Individueel//"
+      run: dotnet test --no-build --verbosity normal
 
   deployment:
     name: deployment
