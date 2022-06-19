@@ -17,6 +17,8 @@ namespace API_Individueel.Controllers
             orderCreation = _orderCreation;
         }
 
+        
+
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(OrderDTO))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
