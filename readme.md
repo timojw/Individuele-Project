@@ -52,72 +52,121 @@ __FR-10__ Een bezorger ziet een kaart waarop staat aangegeven waar hij heen moet
 
 # USECASES
 __Naam__		Een gebruiker kan bestelling plaatsen
-Requirement		FR-01			
-Samenvatting	Een gebruiker kan via de website een bestelling met producten plaatsen.
-Scenario		1. Actor gaat naar website
-				2. Actor logt in op een customer account
-				3. Actor kiest een product uit de lijst
-				4. Actor kiest product kopen
+
+Requirement		FR-01	
+
+Samenvatting	Een gebruiker kan via de website een bestelling met 
+producten plaatsen.
+
+Scenario		
+1. Actor gaat naar website
+2. Actor logt in op een customer account
+3. Actor kiest een product uit de lijst
+4. Actor kiest product kopen
+   
 Uitzonderingen	
+
 Resultaat		Er is een bezorging geplaatst en die staat opgeslagen op de database.
+<hr />
 
 __Naam__		Een restaurant kan informatie van een bestelling inzien.
-Requirement		FR-02			
+
+Requirement		FR-02
+
 Samenvatting	Een restaurant kan op de website over alle bezorgingen informatie inzien.
-Scenario		1. Actor gaat naar de website
-				2. Actor logt in op een restaurant account
-				3. Actor kiest een bezorging in de lijst
-				4. Nieuwe pagina opent met meer informatie over die bezorging
+
+Scenario		
+1. Actor gaat naar de website
+2. Actor logt in op een restaurant account
+3. Actor kiest een bezorging in de lijst
+4. Nieuwe pagina opent met meer informatie over die bezorging
+   
 Uitzonderingen	
+
 Resultaat		Een werknemer van het restaurant heeft meer informatie over een bezorging.
+<hr />
 
 __Naam__		Een bezorger kan de status van een bestelling veranderen.
 Requirement		FR-03			
 Samenvatting	Een bezorger moet de status van een bezorging kunnen aanpassen.
-Scenario		1. Actor gaat naar de website
-				1. Actor logt in op een bezorger account
-				3. Actor kiest status weizigen en kiest daarna waarnaar
+Scenario		
+1. Actor gaat naar de website
+2. Actor logt in op een bezorger account
+3. Actor kiest status weizigen en kiest daarna waarnaar
 					(opties: word bereid, bezorger onderweg, bezorgd)
+
 Uitzonderingen	
+
 Resultaat		Een bezorger heeft de status van de bezorging aangepast.
+<hr />
 
 __Naam__		Het restaurant kan de status van een bestelling veranderen.
 Requirement		FR-04			
 Samenvatting	Een restaurant medewerker moet de status van een bezorging kunnen aanpassen.
-Scenario		1. Actor gaat naar de website
-				2. Actor logt in op een restaurant account
-				3. Actor kiest een bezorging in de lijst
-				4. Actor kiest status weizigen en kiest daarna waarnaar
-					(opties: word bereid, bezorger onderweg, bezorgd)
+Scenario
+
+1. Actor gaat naar de website
+2. Actor logt in op een restaurant account
+3. Actor kiest een bezorging in de lijst
+4. Actor kiest status weizigen en kiest daarna waarnaar
+   
+(opties: word bereid, bezorger onderweg, bezorgd)
+
 Uitzonderingen	
+
 Resultaat		Een bezorger heeft de status van de bezorging aangepast.
+<hr />
 
 __Naam__		Een bezorger kan informatie over bestellingen inzien.
-Requirement		FR-05			
+
+Requirement		FR-05
+
 Samenvatting	Het is belangrijk dat een bezorger alle informatie van zijn huidige bezorging kan bekijken.
-Scenario		1. Actor gaat naar de website
-				2. Actor logt in op een bezorger account
-				3. Website laat informatie zien van huidige bezorging
+
+Scenario
+
+1. Actor gaat naar de website
+2. Actor logt in op een bezorger account
+3. Website laat informatie zien van huidige bezorging
+   
 Uitzonderingen	
+
 Resultaat		Een bezorger heeft alle informatie van de bestelling
+<hr />
 
 __Naam__		Een restaurant kan bezorgers toevoegen.
+
 Requirement		FR-06			
-Samenvatting	Een restaurant medewerker moet de mogelijkheid hebben om een nieuwe bezorger toe te voegen.
-Scenario		1. Actor gaat naar de website
-				2. Actor logt in op een restaurant account
-				3. Actor kiest bezorger toevoegen
-				4. Actor vult informatie over de bezorger
-				5. Actor kiest opslaan
+
+Samenvatting	Een restaurant medewerker moet de mogelijkheid hebben om
+een nieuwe bezorger toe te voegen.
+
+Scenario		
+1. Actor gaat naar de website
+2. Actor logt in op een restaurant account
+3. Actor kiest bezorger toevoegen
+4. Actor vult informatie over de bezorger
+5. Actor kiest opslaan
+   
 Uitzonderingen	De informatie die de actor heeft ingevuld is niet correct.
+
 Resultaat		Een bezorger heeft de status van de bezorging aangepast.
+<hr />
 
 __Naam__		Een restaurant kan bestellingen toewijzen aan bezorgers.
+
 Requirement		FR-07			
-Samenvatting	Een restaurant medewerker moet de nieuwe bezorgingen handmatig kunnen toewijzen aan een bezorger.
-Scenario		1. Actor gaat naar de website
-				2. Actor logt in op een restaurant account
-				3. Actor kiest een bezorging in de lijst
-				4. Actor kiest bezorger weizigen en kiest daarna naar welke bezorger uit de lijst.
+
+Samenvatting	Een restaurant medewerker moet de nieuwe bezorgingen 
+handmatig kunnen toewijzen aan een bezorger.
+
+Scenario		
+
+1. Actor gaat naar de website
+2. Actor logt in op een restaurant account
+3. Actor kiest een bezorging in de lijst
+4. Actor kiest bezorger weizigen en kiest daarna naar welke bezorger uit de lijst.
+   
 Uitzonderingen	
+
 Resultaat		Een bezorging is toegewezen aan een bezorger.
